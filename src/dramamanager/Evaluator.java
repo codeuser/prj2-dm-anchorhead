@@ -1,9 +1,14 @@
 package dramamanager;
 
+import ifgameengine.History;
 import ifgameengine.IFAction;
 import ifgameengine.IFGameState;
+import ifgameengine.UserActionTrace;
+import java.util.Calendar;
+import java.util.Date;
 
 import java.util.List;
+import storyengine.IFPlotPoint;
 import storyengine.IFStory;
 
 public class Evaluator {
@@ -11,6 +16,7 @@ public class Evaluator {
     
     public double secondsSinceLastAction;
     public double secondsToFinishTyping;
+    public int actionCount = -1;
     public int lastActionCount = -1;
     public int zeroActionCount = 0;
     private IFGameState lastState = null;
@@ -30,38 +36,37 @@ public class Evaluator {
          secondsToFinishTyping = 0;
     }
     
-    public void Update(IFGameState m_game) {
+    public void update(IFGameState m_game) {
+        
+        UserActionTrace userTrace = m_game.getUserActionTrace();
+        actionCount = userTrace.size();
+        // if no actions, then exit
+        if (actionCount==0)
+            return;
+        
+        
+        System.out.println("Evaluating...");
+               
         userActions = m_game.getSucceededActions();
         
-        if(userActions.isEmpty())
-        {
-            lastActionCount++;
-            if(lastActionCount==MAX_ERRORS)
-                provideAnyHint();            
-        }        
-        else
-        {
-                                
-            System.out.println(userActions.size());
-            lastActionCount = userActions.size();
-            
-            for(IFAction eachAction: userActions)
-            {
-                System.out.println(eachAction.getObject());
-            }
-        }
-    }
-    
-    public void provideAnyHint()
-    {
-        // hints user to try any of the possible commands allowable
+        System.out.println("Action contains" + userTrace.size());
+        //IFAction userAction = userTrace.getLastUserAction();
         
+        Calendar calNow = Calendar.getInstance();      
+        
+       // int seconds = userAction.actionDate.MINUTE;
+        
+       // System.out.println("Time since last action: " + seconds);       
+                        
     }
     
     public boolean checkPlayerStuck(IFStory playerStory, IFGameState m_game)
     {
         playerStory.computeUserImportantActions(m_game);
         
-        return true;
+        for(IFPlotPoint p: playerStory.getPlotPoints())
+            System.out.println(p.getName());
+        
+        return false;
     }
 }

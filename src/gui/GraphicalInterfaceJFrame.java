@@ -1,5 +1,6 @@
 package gui;
 
+import dramamanager.Director;
 import dramamanager.Evaluator;
 import dramamanager.GameAdapter;
 import ifgameengine.IFAction;
@@ -36,8 +37,7 @@ public class GraphicalInterfaceJFrame extends JPanel {
      * Edited 2/25/2012
      */
     
-    GameAdapter adaptgame;
-    Evaluator  evalgame;
+    public Director directgame;
     
     
     Action sendInputText = new AbstractAction() {
@@ -230,8 +230,7 @@ public class GraphicalInterfaceJFrame extends JPanel {
         m_story.computeUserImportantActions(m_game);
         
         
-        adaptgame = new GameAdapter();
-        evalgame = new Evaluator();
+        directgame = new Director();
     }
 
     public void update() {
@@ -273,11 +272,9 @@ public class GraphicalInterfaceJFrame extends JPanel {
         }
         
         // Unique drama management begins here
-   
-      evalgame.Update(m_game);
-      if(evalgame.checkPlayerStuck(m_story, m_game))
-      {
-          // use game adapter to provide hints based on next available action
-      }
+        
+      directgame.updateGame(m_game, m_story);      
+      directgame.MakeDecision();
+      directgame.Adapt();
     }
 }

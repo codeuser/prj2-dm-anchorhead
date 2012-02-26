@@ -1,6 +1,8 @@
 package ifgameengine;
 
 import java.io.PrintStream;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import org.jdom.Element;
 
@@ -32,6 +34,10 @@ public class IFAction {
 	
 	int m_timmerMax = 0;
 	int m_timmer = 0;
+        
+        
+        // for program manager
+        public Calendar actionDate;
 	
 	public IFAction(String actor,String type) {
 		m_actor = actor;
@@ -112,7 +118,7 @@ public class IFAction {
 			if (m_text==null) {
 				if(a.m_text!=null) return false;
 			} else {
-				if (!m_text.equals(a.m_text)) return false;
+				if (!m_text.equals(a\.m_text)) return false;
 			}
 			*/
 			return true;
@@ -146,7 +152,8 @@ public class IFAction {
     }
 	
 	public void execute(IFObject o,IFRoom r,IFGameState gs,List<String> output) {
-		
+                actionDate = Calendar.getInstance();
+            
 		m_timmer = m_timmerMax;
 		
 		if (m_type.equals(IDLE)) {
