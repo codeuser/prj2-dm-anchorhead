@@ -1,0 +1,340 @@
+<tileset>
+	<tile id = "street">
+	  <img>graphics/street-background.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>640</w>
+	  <h>512</h>
+	</tile>
+	<tile id = "park">
+	  <img>graphics/park-background.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>640</w>
+	  <h>512</h>
+	</tile>
+	<tile id = "livingroom">
+	  <img>graphics/mansion-livingroom-background.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>640</w>
+	  <h>512</h>
+	</tile>
+	<tile id = "hall">
+	  <img>graphics/mansion-hall-background.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>640</w>
+	  <h>512</h>
+	</tile>
+	<tile id = "bedroom">
+	  <img>graphics/mansion-bedroom-background.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>640</w>
+	  <h>512</h>
+	</tile>
+	<tile id = "basement">
+	  <img>graphics/mansion-basement-background.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>640</w>
+	  <h>512</h>
+	</tile>
+	<tile id = "backyard">
+	  <img>graphics/mansion-backyard-background.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>640</w>
+	  <h>512</h>
+	</tile>
+	<tile id = "bar">
+	  <img>graphics/bar-background.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>640</w>
+	  <h>512</h>
+	</tile>
+	<tile id = "magic-shop">
+	  <img>graphics/magicshop-background.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>640</w>
+	  <h>512</h>
+	</tile>	
+	<tile id = "library">
+	  <img>graphics/library-background.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>640</w>
+	  <h>512</h>
+	</tile>	
+	<tile id = "observatory">
+	  <img>graphics/observatory-background.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>640</w>
+	  <h>512</h>
+	</tile>	
+	<tile id = "sewers">
+	  <img>graphics/sewers-background.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>640</w>
+	  <h>512</h>
+	</tile>	
+	
+	<tile id = "crypt-key">
+	  <img>graphics/cryptkey.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>	
+	<tile id = "silver-locket">
+	  <img>graphics/silverlocket.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>	
+	<tile id = "library-card">
+	  <img>graphics/librarycard.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>	
+	<tile id = "drawer-open">
+	  <img>graphics/drawer-open.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>64</h>
+	</tile>		
+	<tile id = "drawer-closed">
+	  <img>graphics/drawer-closed.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>64</h>
+	</tile>		
+	<tile id = "bed">
+	  <img>graphics/bed.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>64</w>
+	  <h>64</h>
+	</tile>	
+	<tile id = "family-album">
+	  <img>graphics/familyalbum.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>	
+	<tile id = "safe-combo">
+	  <img>graphics/safecombo.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>	
+	<tile id = "clippings">
+	  <img>graphics/clippings.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>	
+	<tile id = "family-pages">
+	  <img>graphics/familypages.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>	
+	<tile id = "safe-open">
+	  <img>graphics/safe-open.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>		
+	<tile id = "safe-closed">
+	  <img>graphics/safe-closed.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>		
+	<tile id = "puzzle-box-closed">
+	  <img>graphics/puzzlebox-closed.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>		
+	<tile id = "puzzle-box-open">
+	  <img>graphics/puzzlebox-open.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>		
+	<tile id = "skull">
+	  <img>graphics/skull.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>		
+	<tile id = "crypt-open">
+	  <img>graphics/crypt-open.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>96</w>
+	  <h>64</h>
+	</tile>		
+	<tile id = "crypt-closed">
+	  <img>graphics/crypt-closed.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>96</w>
+	  <h>64</h>
+	</tile>		
+	<tile id = "flask">
+	  <img>graphics/flask.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>		
+	<tile id = "book">
+	  <img>graphics/librarybook.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>		
+	<tile id = "lens">
+	  <img>graphics/lens.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>		
+	<tile id = "magic-ball">
+	  <img>graphics/magic-ball.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>	
+	<tile id = "amulet">
+	  <img>graphics/amulet.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>				
+	<tile id = "telescope">
+	  <img>graphics/telescope.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>64</h>
+	</tile>				
+
+	<tile id = "player">
+	  <img>graphics/character.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>	
+	<tile id = "player-happy">
+	  <img>graphics/character-happy.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>	
+	<tile id = "player-talk">
+	  <img>graphics/character-talk1.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>		
+	<tile id = "bartender">
+	  <img>graphics/bartender.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>		
+	<tile id = "bartender-talk">
+	  <img>graphics/bartender-talk1.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>		
+	<tile id = "magic-shop-owner">
+	  <img>graphics/magicshop-owner.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>		
+	<tile id = "magic-shop-owner-talk">
+	  <img>graphics/magicshop-owner-talk1.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>		
+	<tile id = "library-guy">
+	  <img>graphics/library-guy.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>		
+	<tile id = "library-guy-talk">
+	  <img>graphics/library-guy-talk1.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>		
+	<tile id = "bum">
+	  <img>graphics/bum.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>		
+	<tile id = "bum-happy">
+	  <img>graphics/bum-happy.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>	
+	<tile id = "bum-sad">
+	  <img>graphics/bum-sad.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>			
+	<tile id = "bum-talk">
+	  <img>graphics/bum-talk1.png</img>
+	  <x>0</x>
+	  <y>0</y>
+	  <w>32</w>
+	  <h>32</h>
+	</tile>		
+</tileset>

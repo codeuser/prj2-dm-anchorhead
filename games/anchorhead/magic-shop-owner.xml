@@ -1,0 +1,114 @@
+<ai>
+	<conversation-rule>		
+		<input topic="shop"/>
+		<output topic="reply" text="I sell magic balls and amulets!"/>
+	</conversation-rule>
+	<conversation-rule>		
+		<input topic="items"/>
+		<output topic="reply" text="I sell magic balls and amulets!"/>
+	</conversation-rule>
+	<conversation-rule>		
+		<input topic="item"/>
+		<output topic="reply" text="I sell magic balls and amulets!"/>
+	</conversation-rule>
+	<conversation-rule>		
+		<input topic="apparatus"/>
+		<output topic="reply" text="I sell magic balls and amulets!"/>
+	</conversation-rule>
+	<conversation-rule>		
+		<input topic="puzzle-box"/>
+		<output topic="reply" text="I love puzzles!"/>
+	</conversation-rule>
+	<conversation-rule>		
+		<input topic="puzzles"/>
+		<output topic="reply" text="I love puzzles!"/>
+	</conversation-rule>
+	<conversation-rule>		
+		<input topic="puzzle"/>
+		<output topic="reply" text="I love puzzles!"/>
+	</conversation-rule>
+	<conversation-rule>		
+		<input topic="magic-ball"/>
+		<output topic="reply" text="They can predict the future!"/>
+	</conversation-rule>	
+	<conversation-rule>		
+		<input topic="amulet"/>
+		<output topic="reply" text="They protect from curses."/>
+	</conversation-rule>	
+	<conversation-rule>		
+		<input topic="hello"/>
+		<output topic="reply" text="Hello there! take a look at my apparatus."/>
+		<output topic="reply" text="Hello! Please take a look at the items."/>
+		<output topic="reply" text="Wellcome to my shop!"/>
+	</conversation-rule>
+	<conversation-rule>		
+		<input topic="bye"/>
+		<output topic="reply" text="Farewell!"/>
+		<output topic="reply" text="Good bye!"/>
+		<output topic="reply" text="bye!"/>
+		<output topic="reply" text="See you soon!"/>
+		<output topic="reply" text="bye, bye!"/>
+		<output topic="reply" text="Come back soon!"/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="name"/>
+		<output topic="reply" text="My name is Rodo."/>
+		<output topic="reply" text="My friends call me Rodo."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="self_identity"/>
+		<output topic="reply" text="My name is Rodo."/>
+		<output topic="reply" text="My friends call me Rodo."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="thanks"/>
+		<output topic="reply" text="You are welcome!"/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="protection"/>
+		<output topic="reply" text="Oh! People usually buy an amulet for that."/>
+		<output topic="reply" text="Oh! You would want to buy an amulet for that."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="curses"/>
+		<output topic="reply" text="Oh! People usually buy an amulet for protection against those."/>
+		<output topic="reply" text="Oh! You would want to buy an amulet for protection against those."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="anchorhead"/>
+		<output topic="reply" text="Ack.. I dont like here. Too isolated."/>
+		<output topic="reply" text="I just wanna move out of this place. Too lonely."/>
+		<output topic="reply" text="Not for we youngsters. Not many chicks around."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="edward"/>
+		<output topic="reply" text="He was the richest man in Anchorhead."/>
+		<output topic="reply" text="The mansion across the street belonged to him."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="verlac"/>
+		<output topic="reply" text="He was the richest man in Anchorhead."/>
+		<output topic="reply" text="The mansion across the street belonged to him."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="mansion"/>
+		<output topic="reply" text="Its probably the oldest building in Anchorhead."/>
+		<output topic="reply" text="Its right across the street, sir."/>
+		<output topic="reply" text="Oh! It belonged to Edward Verlac."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="secrets"/>
+		<output topic="reply" text="I know as much as you do sir."/>
+	</conversation-rule>
+	<conversation-rule>
+		<input topic=""/>
+		<output topic="reply" text="say what?"/>
+		<output topic="reply" text="What was that?"/>
+		<output topic="reply" text="I don't understand..."/>
+		<output topic="reply" text="Can you repeat that?"/>
+	</conversation-rule>
+	
+	<accepts-items>
+		<item>puzzle-box</item>
+	</accepts-items>	
+</ai>

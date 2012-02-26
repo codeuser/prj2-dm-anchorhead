@@ -1,0 +1,684 @@
+<story>
+	<intromessage>You are inheriting a Grand Mansion that belonged to your distant cousin Edward Verlac!!! You are in an isolated town called Anchorhead and the lawyer who is supposed to help you out is missing. You goto Anchorhead and decide to check out the town before you decide to inherit it. You come to know some dark secrets about the Verlac family. Edward killed his entire family and then commited suicide at the mental asylum. Should you inherit this place??? You start in the living room of the Mansion.</intromessage>
+	
+	<plotpoint name="get-flask" plot="william" setsup="give-bum-flask">
+		<preconditions>
+			<condition type="and">
+				<condition type="not"><condition type="plotpoint" name="get-flask"/></condition>
+				<condition type="location" character="player" location="bar"/>
+			</condition>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="buy" actor="player"
+						 object="bartender"
+					     object2="flask"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="give" actor="bartender"
+				object="player"
+				object2="flask"/>
+			<action type="talk" actor="bartender"
+				    object="player"
+					object2="reply"
+					text="Here you are!!!"/>
+				
+		</effects>
+	</plotpoint>
+	
+	<plotpoint name="no-more-flasks">
+		<preconditions>
+			<condition type="and">
+				<condition type="plotpoint" name="get-flask"/>
+				<condition type="location" character="player" location="bar"/>
+			</condition>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="buy" actor="player"
+						object="bartender"
+					    object2="flask"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="talk" actor="bartender"
+				    object="player"
+					object2="reply"
+					text="I'm sorry, I run out of those!!"/>
+		</effects>
+	</plotpoint>	
+	
+	<plotpoint name="find-magic-shop">
+		<trigger>
+			<condition type="location" character="player" location="magic-shop"/>
+		</trigger>
+	</plotpoint>		
+	
+	<plotpoint name="get-silver-locket" plot="william" thought="william">
+		<trigger>
+			<condition type="action">
+				<action type="take" actor="player"
+						object="silver-locket"/>
+			</condition>
+		</trigger>
+	</plotpoint>	
+	
+	<plotpoint name="get-card" plot="william" setsup="read-library-book">
+		<trigger>
+			<condition type="action">
+				<action type="take" actor="player"
+						object="library-card"/>
+			</condition>
+		</trigger>
+	</plotpoint>	
+
+	<plotpoint name="get-safe-combo" plot="evil-god" setsup="open-safe" thought="safe">
+		<trigger>
+			<condition type="action">
+				<action type="take" actor="player"
+						object="safe-combo"/>
+			</condition>
+		</trigger>
+	</plotpoint>	
+	
+	<plotpoint name="examine-album" thought="family-history">
+		<trigger>
+			<condition type="action">
+				<action type="examine" actor="player"
+						object="family-album"/>
+			</condition>
+		</trigger>
+	</plotpoint>		
+
+	<plotpoint name="read-basement-clippings" plot="william" thought="family-history">
+		<trigger>
+			<condition type="action">
+				<action type="examine" actor="player"
+						object="clippings"/>
+			</condition>
+		</trigger>
+	</plotpoint>	
+	
+	<plotpoint name="read-bedroom-pages" plot="william" thought="william">
+		<trigger>
+			<condition type="action">
+				<action type="examine" actor="player"
+						object="family-pages"/>
+			</condition>
+		</trigger>
+	</plotpoint>			
+	
+	<plotpoint name="open-safe" plot="evil-god" thought="safe" setsup="open-puzzle-box">
+		<preconditions>
+			<condition type="not"><condition type="plotpoint" name="open-safe"/></condition>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="open" actor="player"
+						object="safe"/>
+			</condition>
+		</trigger>
+	</plotpoint>	
+	
+	<plotpoint name="get-crypt-key" plot="william" thought="crypt">
+		<trigger>
+			<condition type="action">
+				<action type="take" actor="player"
+						object="crypt-key"/>
+			</condition>
+		</trigger>
+	</plotpoint>	
+	
+	<plotpoint name="find-williams-coffin" plot="william" thought="william crypt">
+		<preconditions>
+			<condition type="and">
+				<condition type="not"><condition type="plotpoint" name="find-williams-coffin"/></condition>
+				<condition type="plotpoint" name="get-crypt-key"/>
+			</condition>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="open" actor="player"
+						object="crypt"/>
+			</condition>
+		</trigger>
+	</plotpoint>	
+	
+	<plotpoint name="get-skull" plot="william" thought="william crypt" motivated-by="ask-bum-about-crypt ask-bum-about-william">
+		<preconditions>
+			<condition type="plotpoint" name="find-williams-coffin"/>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="take" actor="player"
+						object="skull"/>
+			</condition>
+		</trigger>
+	</plotpoint>		
+	
+	<plotpoint name="get-library-book" plot="william" thought="family-history">
+		<preconditions>
+			<condition type="and">
+				<condition type="not"><condition type="plotpoint" name="get-library-book"/></condition>
+				<condition type="location" character="player" location="library"/>
+			</condition>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="give" actor="player"
+						 object="library-guy"
+					     object2="library-card"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="give" actor="library-guy"
+				object="player"
+				object2="book"/>
+			<action type="talk" actor="library-guy"
+				    object="player"
+					object2="reply"
+					text="Here you have, the book you had reserved."/>				
+		</effects>
+	</plotpoint>	
+	
+	<plotpoint name="open-puzzle-box" plot="evil-god" setsup="see-evil-god">
+		<preconditions>
+			<condition type="and">
+				<condition type="plotpoint" name="open-safe"/>
+				<condition type="not"><condition type="plotpoint" name="open-puzzle-box"/></condition>
+				<condition type="location" character="player" location="magic-shop"/>
+			</condition>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="give" actor="player"
+						 object="magic-shop-owner"
+					     object2="puzzle-box"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="give" actor="magic-shop-owner"
+				object="player"
+				object2="puzzle-box-open"/>
+			<action type="give" actor="magic-shop-owner"
+				object="player"
+				object2="lens"/>
+			<action type="talk" actor="magic-shop-owner"
+				    object="player"
+					object2="reply"
+					text="There you go! It was a simple logic puzzle!"/>				
+		</effects>
+	</plotpoint>	
+	
+	<plotpoint name="buy-magic-ball">
+		<preconditions>
+			<condition type="and">
+				<condition type="location" character="player" location="magic-shop"/>
+				<condition type="not"><condition type="plotpoint" name="buy-magic-ball"/></condition>				
+			</condition>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="buy" actor="player"
+						 object="magic-shop-owner"
+					     object2="magic-ball"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="give" actor="magic-shop-owner"
+				object="player"
+				object2="magic-ball"/>
+			<action type="talk" actor="magic-shop-owner"
+				    object="player"
+					object2="reply"
+					text="Here you are!!!"/>				
+		</effects>
+	</plotpoint>			
+	
+	<plotpoint name="no-more-magic-ball">
+		<preconditions>
+			<condition type="and">
+				<condition type="location" character="player" location="magic-shop"/>
+				<condition type="plotpoint" name="buy-magic-ball"/>
+			</condition>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="buy" actor="player"
+						 object="magic-shop-owner"
+					     object2="magic-ball"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="talk" actor="magicshop-owner"
+				    object="player"
+					object2="reply"
+					text="Come on! You Already bough one!"/>				
+		</effects>
+	</plotpoint>	
+	
+	<plotpoint name="get-amulet">
+		<preconditions>
+			<condition type="and">
+				<condition type="location" character="player" location="magic-shop"/>
+				<condition type="not"><condition type="plotpoint" name="get-amulet"/></condition>				
+			</condition>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="buy" actor="player"
+						 object="magic-shop-owner"
+					     object2="amulet"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="give" actor="magic-shop-owner"
+				object="player"
+				object2="amulet"/>
+			<action type="talk" actor="magic-shop-owner"
+				    object="player"
+					object2="reply"
+					text="Here you are!!!"/>				
+		</effects>
+	</plotpoint>			
+	
+	<plotpoint name="no-more-amulets">
+		<preconditions>
+			<condition type="and">
+				<condition type="location" character="player" location="magic-shop"/>
+				<condition type="plotpoint" name="get-amulet"/>
+			</condition>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="buy" actor="player"
+						 object="magic-shop-owner"
+					     object2="amulet"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="talk" actor="magic-shop-owner"
+				    object="player"
+					object2="reply"
+					text="Come on! You Already bough one!"/>				
+		</effects>
+	</plotpoint>	
+	
+	<plotpoint name="see-evil-god-denied" plot="evil-god"/>
+	
+	<plotpoint name="see-evil-god" plot="evil-god">
+		<preconditions>
+			<condition type="not"><condition type="plotpoint" name="see-evil-god-denied"/></condition>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="use" actor="player"
+						 object="lens"
+					     object2="telescope"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="talk" actor="player"
+				    object="telescope"
+					object2="reply"
+					text="Oh no! An evil god is approaching the earth! We will all die!!"/>	
+			<endgame delay="100"/>			
+		</effects>
+	</plotpoint>	
+	
+	<plotpoint name="dont-see-evil-god" plot="evil-god">
+		<preconditions>
+			<condition type="plotpoint" name="see-evil-god-denied"/>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="use" actor="player"
+						 object="lens"
+					     object2="telescope"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="talk" actor="player"
+				    object="telescope"
+					object2="reply"
+					text="Telescope is damaged."/>	
+		</effects>
+	</plotpoint>		
+	
+	<plotpoint name="start-talking-to-bum" plot="william" thought="bum" setsup="give-bum-flask">
+		<preconditions>
+				<condition type="not"><condition type="plotpoint" name="start-talking-to-bum"/></condition>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="talk" actor="player"
+						 object="bum"
+					     object2="hello"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="bum-c1"
+					text="What do you want from me, stranger?"/>
+		</effects>
+	</plotpoint>
+	
+	<plotpoint name="hello-to-bum-afterwards">
+		<preconditions>
+			<condition type="plotpoint" name="start-talking-to-bum"/>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="talk" actor="player"
+						 object="bum"
+					     object2="hello"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="Would you spare a coin?"/>
+		</effects>
+	</plotpoint>	
+	
+	<plotpoint name="reject-flask-from-player" plot="william" thougth="bum">
+		<preconditions>
+				<condition type="not"><condition type="plotpoint" name="start-talking-to-bum"/></condition>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="give" actor="player"
+						 object="bum"
+					     object2="flask"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="give" actor="bum"
+				    object="player"
+					object2="flask"/>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="Not from strangers, thanks."/>
+		</effects>
+	</plotpoint>
+	
+	<plotpoint name="reject-amulet-from-player" plot="william" thought="bum">
+		<preconditions>
+				<condition type="not"><condition type="plotpoint" name="start-talking-to-bum"/></condition>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="give" actor="player"
+						 object="bum"
+					     object2="amulet"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="Not from strangers, thank."/>
+			<action type="give" actor="bum"
+				    object="player"
+					object2="amulet"/>
+		</effects>
+	</plotpoint>
+	
+	<plotpoint name="give-bum-flask" plot="william" thought="bum">
+		<preconditions>
+				<condition type="plotpoint" name="start-talking-to-bum"/>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="give" actor="player"
+						 object="bum"
+					     object2="flask"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="Thanks my friend, now I trust you."/>
+		</effects>
+	</plotpoint>
+	
+	<plotpoint name="ask-bum-about-anna" plot="william" thought="bum">
+		<preconditions>
+			<condition type="plotpoint" name="start-talking-to-bum"/>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="talk" actor="player"
+						 object="bum"
+					     object2="picture"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="She is my wife Anna. I miss her a lot."/>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="She left me a few years ago. All thanks to my drinking habit!"/>
+		</effects>
+	</plotpoint>	
+	
+	<plotpoint name="ask-bum-about-himself" plot="william" thought="bum">
+		<preconditions>
+			<condition type="plotpoint" name="start-talking-to-bum"/>
+		</preconditions>
+		<trigger>
+			<condition type="or">
+				<condition type="action">
+					<action type="talk" actor="player"
+							 object="bum"
+						     object2="bum"/>
+				</condition>
+				<condition type="action">
+					<action type="talk" actor="player"
+							 object="bum"
+						     object2="yourself"/>
+				</condition>
+				<condition type="action">
+					<action type="talk" actor="player"
+							 object="bum"
+						     object2="himself"/>
+				</condition>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="I was the servant at the Verlac's Mansion for over 30 years."/>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="I know quite a bit about their family history. But I am scared."/>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="Find me something so that I can protect myself."/>
+		</effects>
+	</plotpoint>		
+	
+	<plotpoint name="ask-bum-about-william" plot="william" thought="bum">
+		<preconditions>
+			<condition type="plotpoint" name="start-talking-to-bum"/>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="talk" actor="player"
+						 object="bum"
+					     object2="william"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="He was the youngest son of Edward Verlac."/>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="He was deformed and was killed soon after birth."/>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="He now rests on his crypt."/>
+		</effects>
+	</plotpoint>
+	
+	<plotpoint name="ask-bum-about-crypt" plot="william" thought="bum crypt" motivatedby="find-williams-coffin" setsup="find-williams-coffin">
+		<preconditions>
+			<condition type="plotpoint" name="start-talking-to-bum"/>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="talk" actor="player"
+						 object="bum"
+					     object2="crypt"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="William's crypt is close to the mansion but... "/>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="You'll need to first find a crypt key yourself."/>
+		</effects>
+	</plotpoint>	
+	
+	<plotpoint name="ask-bum-about-secrets" plot="william" thought="bum crypt" motivatedby="find-williams-coffin" setsup="find-williams-coffin">
+		<preconditions>
+			<condition type="plotpoint" name="start-talking-to-bum"/>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="talk" actor="player"
+						 object="bum"
+					     object2="secrets"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="Hmm, if you don't know what's it about... "/>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="May be you are not worthy of knowing..."/>
+		</effects>
+	</plotpoint>	
+	
+	<plotpoint name="show-bum-skull" plot="william" thought="bum william">
+		<trigger>
+			<condition type="action">
+				<action type="give" actor="player"
+						 object="bum"
+					     object2="skull"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="give" actor="bum"
+				    object="player"
+					object2="skull"/>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="OH! You found William's grave???!!!"/>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="We might be cursed! I need protection!"/>
+		</effects>
+	</plotpoint>	
+	
+	<plotpoint name="give-bum-amulet" plot="william" thought="bum william" setsup="discover-book-in-sewer">
+		<preconditions>
+			<condition type="plotpoint" name="start-talking-to-bum"/>
+			<condition type="plotpoint" name="show-bum-skull"/>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="give" actor="player"
+						 object="bum"
+					     object2="amulet"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="Alright! Here is the secret."/>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="You'll find a hidden book in the sewers..."/>
+			<action type="talk" actor="bum"
+				    object="player"
+					object2="reply"
+					text="Look for it carefully!."/>
+		</effects>
+	</plotpoint>	
+
+	<plotpoint name="discover-book-in-sewer-denied" plot="william"/>
+	
+	<plotpoint name="discover-book-in-sewer" plot="william" >
+		<preconditions>
+			<condition type="and">
+				<condition type="not"><condition type="plotpoint" name="discover-book-in-sewer-denied"/></condition>
+				<condition type="plotpoint" name="give-bum-amulet"/>
+				<condition type="location" character="player" location="sewers"/>
+			</condition>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="examine" actor="player"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="talk" actor="player"
+				    object="street"
+					object2="reply"
+					text="Just as the bum said! There's a lose brick!"/>
+			<action type="talk" actor="player"
+				    object="street"
+					object2="reply"
+					text="This book explains everything!"/>
+			<endgame delay="100"/>	
+		</effects>
+	</plotpoint>	
+	
+	<plotpoint name="dont-discover-book-in-sewer" plot="william" >
+		<preconditions>
+			<condition type="and">
+				<condition type="plotpoint" name="discover-book-in-sewer-denied"/>
+				<condition type="location" character="player" location="sewers"/>
+			</condition>
+		</preconditions>
+		<trigger>
+			<condition type="action">
+				<action type="examine" actor="player"/>
+			</condition>
+		</trigger>
+		<effects>
+			<action type="talk" actor="player"
+				    object="street"
+					object2="reply"
+					text="No light is entering in the sewer, I cannot see anything!"/>
+		</effects>
+	</plotpoint>	
+	
+</story>

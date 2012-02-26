@@ -1,0 +1,40 @@
+<ai>
+	<conversation-rule>	
+		<input topic="give-vodka"/>
+		<output topic="reply" text="Gulp! ... ahhhh!"/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="give-beer"/>
+		<output topic="reply" text="Gulp, gulp .... ahhhhh!"/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="give-wine"/>
+		<output topic="reply" text="Sip, sip. ummmm!"/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="bum-c1"/>
+		<output topic="bum-c2" text="Just being social"/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="bum-c3"/>
+		<output topic="bum-c4" text="I am."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="name"/>
+		<output topic="reply" text="I am He-man! Master of the universe!"/>
+		<output topic="reply" text="I am Michael Kinght"/>
+		<output topic="reply" text="I am SonGoku"/>
+		<output topic="reply" text="I am Bart Simpson"/>
+		<output topic="reply" text="I am Peter Griffin"/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="self_identity"/>
+		<output topic="reply" text="I am He-man! Master of the universe!"/>
+		<output topic="reply" text="I am Michael Kinght"/>
+		<output topic="reply" text="I am SonGoku"/>
+		<output topic="reply" text="I am Bart Simpson"/>
+		<output topic="reply" text="I am Peter Griffin"/>
+	</conversation-rule>
+	
+	<accepts-all-items/>
+</ai>

@@ -1,0 +1,64 @@
+<ai>
+	<conversation-rule>		
+		<input topic="bye"/>
+		<output topic="reply" text="Farewell!"/>
+		<output topic="reply" text="Good bye!"/>
+		<output topic="reply" text="bye!"/>
+		<output topic="reply" text="See you soon!"/>
+		<output topic="reply" text="bye, bye!"/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="name"/>
+		<output topic="reply" text="My name is Jeeves."/>
+		<output topic="reply" text="My friends call me Jeeves."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="self_identity"/>
+		<output topic="reply" text="My name is Jeeves."/>
+		<output topic="reply" text="My friends call me Jeeves."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="thanks"/>
+		<output topic="reply" text="You are welcome!"/>
+	</conversation-rule>
+	<conversation-rule>
+		<input topic=""/>
+		<output topic="reply" text="say what?"/>
+		<output topic="reply" text="What was that?"/>
+		<output topic="reply" text="I don't understand..."/>
+		<output topic="reply" text="Can you repeat that?"/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="anchorhead"/>
+		<output topic="reply" text="Its beautiful. So much to do."/>
+		<output topic="reply" text="Its just amazing, but I lost my wife Anna here."/>
+	</conversation-rule>
+	<conversation-rule>
+		<input topic="bum-c2"/>
+		<output topic="bum-c3" text="Are you the man who is inheriting the Verlac's Mansion?"/>
+	</conversation-rule>
+	<conversation-rule>
+		<input topic="mansion"/>
+		<output topic="bum-c3" text="Are you the man who is inheriting it?"/>
+	</conversation-rule>
+	<conversation-rule>
+		<input topic="edward"/>
+		<output topic="bum-c4" text="He was the richest man in Anchorhead."/>
+	</conversation-rule>
+	<conversation-rule>
+		<input topic="verlac"/>
+		<output topic="bum-c4" text="He was the richest man in Anchorhead."/>
+	</conversation-rule>
+	<conversation-rule>
+		<input topic="bum-c4"/>
+		<output topic="reply" text="I know some secrets... But you need to pay with booze."/>
+	</conversation-rule>
+	<conversation-rule>
+		<input topic="secrets"/>
+		<output topic="reply" text="I have a lot to tell my friend."/>
+	</conversation-rule>
+	<accepts-items>
+		<item>flask</item>
+		<item>amulet</item>
+	</accepts-items>
+</ai>

@@ -1,0 +1,713 @@
+<IFGameState>
+	<room id = "street">
+		<description>The main street of Anchorhead.</description>
+		
+		<navigation>
+			<point id="M1" x="96" y="96"/>
+			<point id="M2" x="96" y="128"/>
+			<point id="M3" x="128" y="128"/>
+			<point id="BY1" x="256" y="0"/>
+			<point id="BY2" x="256" y="32"/>
+			<point id="BY3" x="320" y="32"/>
+			<point id="B1" x="544" y="128"/>
+			<point id="MS1" x="32" y="416"/>
+			<point id="L1" x="256" y="416"/>
+			<point id="O1" x="416" y="416"/>
+			<point id="P1" x="544" y="448"/>
+			<point id="P2" x="544" y="416"/>
+			<point id="P3" x="608" y="416"/>
+			<point id="SW1" x="0" y="224"/>
+			<point id="SW2" x="0" y="256"/>
+			<point id="SU1" x="128" y="224"/>
+			<point id="SU2" x="160" y="224"/>
+			<point id="SU3" x="320" y="224"/>
+			<point id="SU4" x="352" y="224"/>
+			<point id="SU5" x="544" y="224"/>
+			<point id="SD1" x="32" y="448"/>
+			<point id="SD2" x="160" y="448"/>
+			<point id="SD3" x="256" y="448"/>
+			<point id="SD4" x="352" y="448"/>
+			<point id="SD5" x="416" y="448"/>
+			<link p1="M1" p2="M2"/>
+			<link p1="M2" p2="M3"/>
+			<link p1="M3" p2="SU1"/>
+			<link p1="BY1" p2="BY2"/>
+			<link p1="BY2" p2="BY3"/>
+			<link p1="BY3" p2="SU3"/>
+			<link p1="B1" p2="SU5"/>
+			<link p1="MS1" p2="SD1"/>
+			<link p1="L1" p2="SD3"/>
+			<link p1="O1" p2="SD5"/>
+			<link p1="SD5" p2="P1"/>
+			<link p1="P1" p2="P2"/>
+			<link p1="P2" p2="P3"/>
+			<link p1="SW1" p2="SU1"/>
+			<link p1="SW1" p2="SW2"/>
+			<link p1="SU1" p2="SU2"/>
+			<link p1="SU2" p2="SU3"/>
+			<link p1="SU3" p2="SU4"/>
+			<link p1="SU4" p2="SU5"/>
+			<link p1="SD1" p2="SD2"/>
+			<link p1="SD2" p2="SD3"/>
+			<link p1="SD3" p2="SD4"/>
+			<link p1="SD4" p2="SD5"/>
+			<link p1="SU2" p2="SD2"/>
+			<link p1="SU4" p2="SD4"/>
+		</navigation>		
+		
+	
+		<background>
+			<object type="tile" id="street" x="0" y="0">  	
+				<animation action="idle">
+					<frame time="100">street</frame>
+				</animation>			
+			</object>
+		</background>
+		
+		<objects>			
+			<object type="location" id="park" x="608" y="416">
+				<description>The park is a nice place to hang out.</description>
+				<destination room="park" x="0" y="416"/>
+			</object>
+			<object type="location" id="backyard" x="224" y="0">
+				<description>The nice backyard of Verlag Mansion.</description>
+				<destination room="backyard" x="224" y="480"/>
+			</object>
+			<object type="location" id="mansion" x="96" y="96">
+				<description>The Verlag Mansion.</description>
+				<destination room="livingroom" x="320" y="480"/>
+			</object>
+			<object type="location" id="bar" x="544" y="128">
+				<description>The bar of Anchorhead, the best place to find booze.</description>
+				<destination room="bar" x="288" y="416"/>
+			</object>
+			<object type="location" id="magic-shop" x="32" y="416" synonym = "magic shop">
+				<description>A weird magic shop in the town of Anchorhead.</description>
+				<destination room="magic-shop" x="288" y="352"/>
+			</object>
+			<object type="location" id="library" x="256" y="416">
+				<description>The library of Anchorhead.</description>
+				<destination room="library" x="320" y="384"/>
+			</object>
+			<object type="location" id="observatory" x="416" y="416">
+				<description>The observatory, a fine place to see the stars.</description>
+				<destination room="observatory" x="224" y="288"/>
+			</object>
+			<object type="location" id="sewers" x="0" y="256" synonym = "sewer">
+				<description>A portion of the sewers, directly below the streets of Anchorhead.</description>			
+				<destination room="sewers" x="256" y="192"/>
+			</object>
+		</objects>
+	</room>
+
+	<room id = "park">
+		<description>The park is a nice place to hang out.</description>
+	
+		<navigation>
+			<point id="A" x="0" y="416"/>
+			<point id="B" x="416" y="416"/>
+			<point id="BUM" x="448" y="416"/>			
+			<link p1="A" p2="B"/>
+		</navigation>		
+		
+		<background>
+			<object type="tile" id="park" x="0" y="0">  	
+				<animation action="idle">
+					<frame time="100">park</frame>
+				</animation>			
+			</object>
+		</background>
+		
+		<objects>
+			<object type="location" id="street" x="0" y="416">
+				<description>The main street of Anchorhead.</description>
+				<destination room="street" x="608" y="416"/>
+			</object>
+			
+			<object type="character" id="bum" x="448" y="416">
+				<description>A poor and skinny bum, he's holding a picture in his hand.</description>
+				<inventory>
+				</inventory>
+				<action>
+					<type>idle</type>
+				</action>
+				<animations>
+					<animation action="idle">
+						<frame time="100">bum</frame>
+					</animation>
+					<animation action="talk">
+						<frame time="5">bum-talk</frame>
+						<frame time="5">bum</frame>
+					</animation>
+				</animations>
+				<ai>bum.xml</ai>
+			</object>			
+		</objects>
+	</room>
+
+	<room id = "livingroom">
+		<description>The entrance to Verlag Mansion.</description>
+		
+		<navigation>
+			<point id="A" x="320" y="480"/>
+			<point id="B" x="320" y="416"/>
+			<point id="C" x="320" y="224"/>
+			<link p1="A" p2="B"/>
+			<link p1="B" p2="C"/>
+		</navigation>		
+
+		<background>
+			<object type="tile" id="livingroom" x="0" y="0">  	
+				<animation action="idle">
+					<frame time="100">livingroom</frame>
+				</animation>			
+			</object>
+		</background>
+		
+		<objects>
+			<object type="character" id="player" x="320" y="416">
+				<description>I'm an average person</description>
+				<inventory>
+				</inventory>
+				<action>
+					<type>idle</type>
+				</action>
+				<animations>
+					<animation action="idle">
+						<frame time="125">player</frame>
+						<frame time="15">player-happy</frame>
+					</animation>
+					<animation action="talk">
+						<frame time="5">player-talk</frame>
+						<frame time="5">player</frame>
+					</animation>
+				</animations>
+				<ai>player.xml</ai>
+			</object>
+		
+			<object type="location" id="street" x="320" y="480">
+				<description>The main street of Anchorhead.</description>
+				<destination room="street" x="96" y="96"/>
+			</object>
+			<object type="location" id="hall" x="320" y="224">
+				<description>The hall of Verlag Mansion.</description>
+				<destination room="hall" x="320" y="192"/>
+			</object>
+		</objects>
+	</room>
+
+	<room id = "backyard">
+		<description>The nice backyard of Verlag Mansion.</description>
+
+		<navigation>
+			<point id="A" x="224" y="480"/>
+			<point id="B" x="96" y="352"/>
+			<point id="C" x="96" y="256"/>
+			<point id="D" x="224" y="352"/>
+			<link p1="B" p2="C"/>
+			<link p1="B" p2="D"/>
+			<link p1="D" p2="A"/>
+		</navigation>		
+
+		<background>
+			<object type="tile" id="backyard" x="0" y="0">  	
+				<animation action="idle">
+					<frame time="100">backyard</frame>
+				</animation>			
+			</object>
+		</background>
+		
+		<objects>
+			<object type="location" id="street" x="224" y="480">
+				<description>The main street of Anchorhead.</description>
+				<destination room="street" x="224" y="0"/>
+			</object>
+			<object type="location" id="hall" x="96" y="352">
+				<description>The hall of Verlag Mansion.</description>
+				<destination room="hall" x="352" y="64"/>
+			</object>
+			
+			<object type="container" id="crypt" x="64" y="160">
+				<open>closed</open>
+				<canopen>true</canopen>
+				<locked>true</locked>
+				<lock>crypt-key</lock>
+				<description>A crypt, it has a lock, and a door.</description>
+				<openmessage>The crypt is open, and William's coffin is inside!</openmessage>
+				<closedanimation>
+					<animation action="idle">
+						<frame time="100">crypt-closed</frame>
+					</animation>
+				</closedanimation>
+				<openanimation>
+					<animation action="idle">
+						<frame time="100">crypt-open</frame>
+					</animation>
+				</openanimation>
+				<objects>
+					<object type="item" id="skull" x="0" y="64">
+						<description>This is William's skull.</description>
+						<animation action="idle">
+							<frame time="100">skull</frame>
+						</animation>
+					</object>	
+				</objects>				
+			</object>			
+			
+		</objects>
+	</room>
+
+	<room id = "hall">
+		<description>The hall of Verlag Mansion.</description>
+
+		<navigation>
+			<point id="A" x="352" y="64"/>
+			<point id="B" x="320" y="192"/>
+			<point id="C" x="224" y="128"/>
+			<point id="D" x="416" y="128"/>
+			<point id="E" x="352" y="128"/>
+			<point id="F" x="320" y="128"/>
+			<link p1="A" p2="E"/>
+			<link p1="B" p2="F"/>
+			<link p1="C" p2="F"/>
+			<link p1="D" p2="E"/>
+			<link p1="E" p2="F"/>
+		</navigation>
+
+		<background>
+			<object type="tile" id="hall" x="0" y="0">  	
+				<animation action="idle">
+					<frame time="100">hall</frame>
+				</animation>			
+			</object>
+		</background>
+		
+		<objects>
+			<object type="location" id="backyard" x="352" y="64">
+				<description>The nice backyard of Verlag Mansion.</description>
+				<destination room="backyard" x="96" y="352"/>
+			</object>
+			<object type="location" id="livingroom" x="320" y="192">
+				<description>The entrance to Verlag Mansion.</description>
+				<destination room="livingroom" x="320" y="224"/>
+			</object>
+			<object type="location" id="bedroom" x="224" y="128">
+				<description>The main bedroom of Verlag Mansion.</description>
+				<destination room="bedroom" x="192" y="128"/>
+			</object>
+			<object type="location" id="basement" x="416" y="128">
+				<description>The basement of Verlag Mansion.</description>
+				<destination room="basement" x="448" y="128"/>
+			</object>
+		</objects>
+	</room>
+
+	<room id = "bedroom">
+		<description>The main bedroom of Verlag Mansion.</description>
+
+		<navigation>
+			<point id="A" x="192" y="128"/>
+			<point id="B" x="96" y="128"/>
+			<point id="C" x="32" y="128"/>
+			<point id="D" x="32" y="64"/>
+			<point id="E" x="96" y="64"/>
+			<link p1="A" p2="B"/>
+			<link p1="B" p2="C"/>
+			<link p1="C" p2="D"/>
+			<link p1="D" p2="E"/>
+			<link p1="E" p2="B"/>
+		</navigation>	
+		
+		<background>
+			<object type="tile" id="bedroom" x="0" y="0">
+				<animation action="idle">
+					<frame time="100">bedroom</frame>
+				</animation>			
+			</object>
+		</background>
+		
+		<objects>
+			<object type="location" id="hall" x="192" y="128">
+				<description>The hall of Verlag Mansion.</description>
+				<destination room="hall" x="224" y="128"/>
+			</object>
+			
+			<object type="container" id="bed" x="128" y="32">
+				<open>true</open>
+				<canopen>false</canopen>
+				<description>A double bed, perfect for a nice nap!</description>
+				<closedanimation>
+					<animation action="idle">
+						<frame time="100">bed</frame>
+					</animation>
+				</closedanimation>
+				<openanimation>
+					<animation action="idle">
+						<frame time="100">bed</frame>
+					</animation>
+				</openanimation>
+				<objects>
+					<object type="item" id="safe-combo" x="128" y="32" synonym = "combo;comination">
+						<description>18-19-22-04-03. This looks like a combination to open some kind of secret vault.</description>
+						<animation action="idle">
+							<frame time="100">safe-combo</frame>
+						</animation>
+					</object>	
+				</objects>				
+			</object>
+			<object type="tile" id="family-album" x="32" y="160" synonym = "album">
+				<description>These pictures seem old. I really do not know anyone in this whole album.</description>
+				<animation action="idle">
+					<frame time="100">family-album</frame>
+				</animation>
+			</object>									
+			<object type="container" id="drawers" x="96" y="0" synonym = "drawer">
+				<open>false</open>
+				<canopen>true</canopen>
+				<description>A small unlocked drawer beside the bed.</description>
+				<closedanimation>
+					<animation action="idle">
+						<frame time="100">drawer-closed</frame>
+					</animation>
+				</closedanimation>
+				<openanimation>
+					<animation action="idle">
+						<frame time="100">drawer-open</frame>
+					</animation>
+				</openanimation>
+				
+				<objects>
+					<object type="item" id="library-card" x="96" y="0" synonym = "card">
+						<description>A card to take books out of the libary.</description>
+						<animation action="idle">
+							<frame time="100">library-card</frame>
+						</animation>
+					</object>	
+				</objects>
+			</object>
+			<object type="container" id="safe" x="0" y="64">
+				<open>closed</open>
+				<canopen>true</canopen>
+				<locked>true</locked>
+				<lock>safe-combo</lock>
+				<description>A safe that has to be open with a secred combination.</description>
+				<closedanimation>
+					<animation action="idle">
+						<frame time="100">safe-closed</frame>
+					</animation>
+				</closedanimation>
+				<openanimation>
+					<animation action="idle">
+						<frame time="100">safe-open</frame>
+					</animation>
+				</openanimation>
+				<objects>
+					<object type="item" id="puzzle-box" x="0" y="64" synonym = "box">
+						<description>Ah! I have no idea. I really need help from someone with this.</description>
+						<animation action="idle">
+							<frame time="100">puzzle-box-closed</frame>
+						</animation>
+					</object>	
+				</objects>				
+			</object>			
+		
+		</objects>
+	</room>
+
+	<room id = "basement">
+		<description>The basement of Verlag Mansion.</description>
+
+		<navigation>
+			<point id="A" x="448" y="128"/>
+			<point id="B" x="544" y="128"/>
+			<point id="C" x="544" y="96"/>
+			<point id="D" x="544" y="64"/>
+			<point id="E" x="576" y="96"/>
+			<link p1="A" p2="B"/>
+			<link p1="B" p2="C"/>
+			<link p1="C" p2="D"/>
+			<link p1="C" p2="E"/>
+		</navigation>	
+		
+		<background>
+			<object type="tile" id="basement" x="0" y="0">	
+				<animation action="idle">
+					<frame time="100">basement</frame>
+				</animation>			
+			</object>
+		</background>
+		
+		<objects>
+			<object type="location" id="hall" x="448" y="128">
+				<description>The hall of Verlag Mansion.</description>
+				<destination room="hall" x="416" y="128"/>
+			</object>
+			
+			<object type="item" id="crypt-key" x="544" y="64" synonym = "key">
+				<description>A small grey and creepy key</description>
+				<animation action="idle">
+					<frame time="100">crypt-key</frame>
+				</animation>
+			</object>
+			<object type="item" id="silver-locket" x="544" y="128" synonym = "locket">
+				<description>This must belong to the lady of the house. Wait.. it says Anna. Who is Anna?</description>
+				<animation action="idle">
+					<frame time="100">silver-locket</frame>
+				</animation>
+			</object>
+			<object type="tile" id="family-pages" x="576" y="64" synonym = "pages">
+				<description>There seems to be a family member named William that I did not know about.</description>
+				<animation action="idle">
+					<frame time="100">family-pages</frame>
+				</animation>
+			</object>			
+			<object type="tile" id="clippings" x="608" y="96" synonym = "clipping">
+				<description>Some clipings of the family. I do not see anything interesting at all.</description>
+				<animation action="idle">
+					<frame time="100">clippings</frame>
+				</animation>
+			</object>			
+		</objects>
+	</room>
+
+	<room id = "bar">
+		<description>The bar of Anchorhead, the best place to find booze.</description>
+
+		<navigation>
+			<point id="A" x="288" y="416"/>
+			<point id="B" x="288" y="192"/>
+			<point id="C" x="192" y="192"/>
+			<point id="BARTENDER" x="128" y="192"/>
+			<link p1="A" p2="B"/>
+			<link p1="B" p2="C"/>
+		</navigation>	
+		
+		<background>
+			<object type="tile" id="bar" x="0" y="0">  	
+				<animation action="idle">
+					<frame time="100">bar</frame>
+				</animation>			
+			</object>
+		</background>
+		
+		<objects>
+			<object type="location" id="street" x="288" y="416">
+				<description>The main street of Anchorhead.</description>
+				<destination room="street" x="544" y="128"/>
+			</object>
+			
+			<object type="character" id="bartender" x="128" y="192">
+				<description>He looks friendly but rough, I better don't try to trick him...</description>
+				<inventory>
+					<object type="item" id="flask" x="128" y="192">
+						<description>A flask of local liquor.</description>
+						<animation action="idle">
+							<frame time="100">flask</frame>
+						</animation>
+					</object>			
+				</inventory>
+				<action>
+					<type>idle</type>
+				</action>
+				<animations>
+					<animation action="idle">
+						<frame time="100">bartender</frame>
+					</animation>
+					<animation action="talk">
+						<frame time="5">bartender-talk</frame>
+						<frame time="5">bartender</frame>
+					</animation>
+				</animations>
+				<ai>bartender.xml</ai>
+			</object>			
+		</objects>
+	</room>
+	
+	<room id = "magic-shop" synonym = "shop">
+		<description>A weird magic shop in the town of Anchorhead. Lots of crazy items. These things sure remind me of the Harry Potter series.</description>
+
+		<navigation>
+			<point id="A" x="288" y="384"/>
+			<point id="B" x="288" y="352"/>
+			<point id="C" x="160" y="352"/>
+			<point id="D" x="160" y="192"/>
+			<point id="OWNER" x="144" y="128"/>		
+			<link p1="A" p2="B"/>
+			<link p1="B" p2="C"/>
+			<link p1="C" p2="D"/>
+		</navigation>	
+		
+		<background>
+			<object type="tile" id="magic-shop" x="0" y="0">  	
+				<animation action="idle">
+					<frame time="100">magic-shop</frame>
+				</animation>			
+			</object>
+		</background>
+		
+		<objects>
+			<object type="location" id="street" x="288" y="352">
+				<description>The main street of Anchorhead.</description>
+				<destination room="street" x="32" y="416"/>
+			</object>
+			
+			<object type="character" id="magic-shop-owner" x="144" y="128" synonym = "owner">
+				<description>He looks like a nice person. He seems to sell lots of items</description>
+				<inventory>
+					<object type="item" id="puzzle-box-open" x="0" y="64">
+						<description>Wow! I really would have never figured out how to open this!</description>
+						<animation action="idle">
+							<frame time="100">puzzle-box-open</frame>
+						</animation>
+					</object>	
+					<object type="item" id="lens" x="0" y="64">
+						<description>A huge lens!</description>
+						<animation action="idle">
+							<frame time="100">lens</frame>
+						</animation>
+					</object>				
+					<object type="item" id="magic-ball" x="0" y="64" synonym = "ball">
+						<description>Hi, I am the magic ball. Welcome to the world of Future. Ironically, my future lies in your hands ;)</description>
+						<animation action="idle">
+							<frame time="100">magic-ball</frame>
+						</animation>
+					</object>				
+					<object type="item" id="amulet" x="0" y="64">
+						<description>A shiny and protective amulet</description>
+						<animation action="idle">
+							<frame time="100">amulet</frame>
+						</animation>
+					</object>				
+				</inventory>
+				<action>
+					<type>idle</type>
+				</action>
+				<animations>
+					<animation action="idle">
+						<frame time="100">magic-shop-owner</frame>
+					</animation>
+					<animation action="talk">
+						<frame time="5">magic-shop-owner-talk</frame>
+						<frame time="5">magic-shop-owner</frame>
+					</animation>
+				</animations>
+				<ai>magic-shop-owner.xml</ai>
+			</object>			
+			
+		</objects>
+	</room>	
+
+	<room id = "library">
+		<description>The library of Anchorhead.</description>
+
+		<navigation>
+			<point id="A" x="320" y="384"/>
+			<point id="B" x="320" y="352"/>
+			<point id="C" x="192" y="352"/>
+			<point id="GUY" x="160" y="352"/>			
+			<link p1="A" p2="B"/>
+			<link p1="B" p2="C"/>
+		</navigation>	
+		
+		<background>
+			<object type="tile" id="library" x="0" y="0">  	
+				<animation action="idle">
+					<frame time="100">library</frame>
+				</animation>			
+			</object>
+		</background>
+		
+		<objects>
+			<object type="location" id="street" x="320" y="384">
+				<description>The main street of Anchorhead.</description>
+				<destination room="street" x="256" y="416"/>
+			</object>
+			
+			<object type="tile" id="books" x="416" y="288">
+				<description>There is a book titled: "Fascinating facts about birth pattern in Anchorhead", In Anchorhead the population ratio MAN:WOMAN = 9:10, Amazing!</description>
+				<animation action="idle">
+					<frame time="100">books</frame>
+				</animation>
+			</object>		
+			<object type="character" id="library-guy" x="160" y="352">
+				<description>He looks like an efficient guy.</description>
+				<inventory>
+					<object type="item" id="book" x="128" y="192">
+						<description>The book narrates the stoy of Anchorhead. Interesting.. it also talks about a servant in the mansion.</description>
+						<animation action="idle">
+							<frame time="100">book</frame>
+						</animation>
+					</object>			
+				</inventory>
+				<action>
+					<type>idle</type>
+				</action>
+				<animations>
+					<animation action="idle">
+						<frame time="100">library-guy</frame>
+					</animation>
+					<animation action="talk">
+						<frame time="5">library-guy-talk</frame>
+						<frame time="5">library-guy</frame>
+					</animation>
+				</animations>
+				<ai>library-guy.xml</ai>
+			</object>							
+		</objects>
+	</room>	
+		
+	<room id = "observatory">
+		<description>The observatory, a fine place to see the stars.</description>
+
+		<navigation>
+			<point id="A" x="224" y="288"/>
+			<point id="B" x="320" y="256"/>
+			<link p1="A" p2="B"/>
+		</navigation>	
+		
+		<background>
+			<object type="tile" id="observatory" x="0" y="0">  	
+				<animation action="idle">
+					<frame time="100">observatory</frame>
+				</animation>			
+			</object>
+		</background>
+		
+		<objects>
+			<object type="location" id="street" x="224" y="288">
+				<description>The main street of Anchorhead.</description>
+				<destination room="street" x="416" y="416"/>
+			</object>
+			<object type="tile" id="telescope" x="320" y="160">
+				<description>I can't see anything, the lens is missing!</description>
+				<animation action="idle">
+					<frame time="100">telescope</frame>
+				</animation>
+			</object>		
+		</objects>
+	</room>	
+	
+	<room id = "sewers" synonym = "sewer">
+		<description>A portion of the sewers, directly below the streets of Anchorhead.</description>
+
+		<navigation>
+			<point id="A" x="256" y="192"/>
+		</navigation>	
+		
+		<background>
+			<object type="tile" id="sewers" x="0" y="0">  	
+				<animation action="idle">
+					<frame time="100">sewers</frame>
+				</animation>			
+			</object>
+		</background>
+		
+		<objects>
+			<object type="location" id="street" x="256" y="192">
+				<description>The main street of Anchorhead.</description>
+				<destination room="street" x="0" y="256"/>
+			</object>
+		</objects>
+	</room>			
+
+</IFGameState>

@@ -1,0 +1,134 @@
+<ai>
+	<conversation-rule>	
+		<input topic="drinks"/>
+		<output topic="reply" text="I have wine, beer, vodka for here or flasks to go."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="drink"/>
+		<output topic="reply" text="I have wine, beer, vodka for here or flasks to go."/>
+	</conversation-rule>
+	<general-rule>	
+		<trigger>
+			<condition type="action">
+				<action type="buy" actor="player"
+						object="bartender"
+					    object2="wine"/>		
+			</condition>
+		</trigger>
+		<effects>
+			<action type="talk" actor="bartender"
+				object="player"
+				object2="give-wine"
+				text="Here you are, import french wine!"/>
+		</effects>
+	</general-rule>
+	<conversation-rule>	
+		<input topic="wine"/>
+		<output topic="give-wine" text="Here you are, import french wine!"/>
+	</conversation-rule>
+	<general-rule>	
+		<trigger>
+			<condition type="action">
+				<action type="buy" actor="player"
+						object="bartender"
+					    object2="beer"/>		
+			</condition>
+		</trigger>
+		<effects>
+			<action type="talk" actor="bartender"
+				object="player"
+				object2="give-beer"
+				text="Here you are, the finest local beer!"/>			
+		</effects>
+	</general-rule>
+	<conversation-rule>	
+		<input topic="beer"/>
+		<output topic="give-beer" text="Here you are, the finest local beer!"/>
+	</conversation-rule>	
+	<general-rule>	
+		<trigger>
+			<condition type="action">
+				<action type="buy" actor="player"
+						 object="bartender"
+					     object2="vodka"/>		
+			</condition>
+		</trigger>
+		<effects>
+			<action type="talk" actor="bartender"
+				object="player"
+				object2="give-vodka"
+				text="Here you are, true russian vodka!"/>					
+		</effects>
+	</general-rule>
+	<conversation-rule>	
+		<input topic="vodka"/>
+		<output topic="give-vodka" text="Here you are, true russian vodka!"/>
+	</conversation-rule>	
+	<conversation-rule>		
+		<input topic="hello"/>
+		<output topic="reply" text="Hello there! Whould you like a drink?"/>
+		<output topic="reply" text="How are you doing, sir?"/>
+		<output topic="reply" text="Hello!"/>
+		<output topic="reply" text="Hi!"/>
+		<output topic="reply" text="Hi there!"/>
+		<output topic="reply" text="Wellcome to my bar!"/>
+	</conversation-rule>
+	<conversation-rule>		
+		<input topic="bye"/>
+		<output topic="reply" text="Farewell!"/>
+		<output topic="reply" text="Good bye!"/>
+		<output topic="reply" text="bye!"/>
+		<output topic="reply" text="See you soon!"/>
+		<output topic="reply" text="bye, bye!"/>
+		<output topic="reply" text="Come back soon!"/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="name"/>
+		<output topic="reply" text="My name is Jefferson."/>
+		<output topic="reply" text="My friends call me Jefferson."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="self_identity"/>
+		<output topic="reply" text="My name is Jefferson."/>
+		<output topic="reply" text="My friends call me Jefferson."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="thanks"/>
+		<output topic="reply" text="You are welcome!"/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="anchorhead"/>
+		<output topic="reply" text="The best place to live. Its just beautiful."/>
+		<output topic="reply" text="Oh. This is my birthplace. I just love it."/>
+		<output topic="reply" text="Oh. Its isolated from the tensions of the world. Peaceful."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="edward"/>
+		<output topic="reply" text="Shhh... speak slow. I am not supposed to tell you about him."/>
+		<output topic="reply" text="Please talk only about drinks. I don't like gossiping."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="verlac"/>
+		<output topic="reply" text="Shhh... speak slow. I am not supposed to tell you about him."/>
+		<output topic="reply" text="Please talk only about drinks. I don't like gossiping."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="mansion"/>
+		<output topic="reply" text="Shhh... speak slow. I am not supposed to tell you about the mansion."/>
+		<output topic="reply" text="Never go near to that place. Its haunted."/>
+		<output topic="reply" text="Sir, please talk only about drinks."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="secrets"/>
+		<output topic="reply" text="Give me a break!! I sell drinks. No secrets."/>
+		<output topic="reply" text="If I tell, I will have to kill you."/>
+	</conversation-rule>
+	<conversation-rule>
+		<input topic=""/>
+		<output topic="reply" text="say what?"/>
+		<output topic="reply" text="What was that?"/>
+		<output topic="reply" text="I don't understand..."/>
+		<output topic="reply" text="Can you repeat that?"/>
+		<output topic="reply" text="Was that a drink I have never heard of?"/>
+	</conversation-rule>
+</ai>

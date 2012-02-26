@@ -1,0 +1,71 @@
+<ai>
+	<conversation-rule>		
+		<input topic="hello"/>
+		<output topic="reply" text="Hello there! If you like books, I have plenty!?"/>
+		<output topic="reply" text="How are you doing, sir?"/>
+		<output topic="reply" text="Hello!"/>
+		<output topic="reply" text="Hi!"/>
+		<output topic="reply" text="Hi there!"/>
+		<output topic="reply" text="Wellcome to the library!"/>
+	</conversation-rule>
+	<conversation-rule>		
+		<input topic="bye"/>
+		<output topic="reply" text="Farewell!"/>
+		<output topic="reply" text="Good bye!"/>
+		<output topic="reply" text="bye!"/>
+		<output topic="reply" text="See you soon!"/>
+		<output topic="reply" text="bye, bye!"/>
+		<output topic="reply" text="Come back soon!"/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="name"/>
+		<output topic="reply" text="My name is Apu."/>
+		<output topic="reply" text="My friends call me Apu."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="self_identity"/>
+		<output topic="reply" text="My name is Apu."/>
+		<output topic="reply" text="My friends call me Apu."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="thanks"/>
+		<output topic="reply" text="You are welcome!"/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="anchorhead"/>
+		<output topic="reply" text="I dont know much about this place. I just moved."/>
+		<output topic="reply" text="I have heard a lot too, but never got a chance to explore."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="edward"/>
+		<output topic="reply" text="I am sorry. I am new to this place."/>
+		<output topic="reply" text="Never heard of him."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="verlac"/>
+		<output topic="reply" text="I am sorry. I am new to this place."/>
+		<output topic="reply" text="Never heard of him."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="mansion"/>
+		<output topic="reply" text="I think its right across the street."/>
+		<output topic="reply" text="Ya, its the huge building across the street."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="books"/>
+		<output topic="reply" text="Plenty of 'em to read here. But I need your library-card"/>
+		<output topic="reply" text="Can I see your library-card please."/>
+	</conversation-rule>
+	<conversation-rule>	
+		<input topic="secrets"/>
+		<output topic="reply" text="Oh. I am not the right person. I just moved here."/>
+	</conversation-rule>
+	<conversation-rule>
+		<input topic=""/>
+		<output topic="reply" text="say what?"/>
+		<output topic="reply" text="What was that?"/>
+		<output topic="reply" text="I don't understand..."/>
+		<output topic="reply" text="Can you repeat that?"/>
+	</conversation-rule>
+	
+</ai>
