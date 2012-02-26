@@ -1,5 +1,7 @@
 package gui;
 
+import dramamanager.Evaluator;
+import dramamanager.GameAdapter;
 import ifgameengine.IFAction;
 import ifgameengine.IFCharacter;
 import ifgameengine.IFGameState;
@@ -29,6 +31,13 @@ public class GraphicalInterfaceJFrame extends JPanel {
     JTextPane m_inventory = null;
     String m_focus_character = "player";
     static PrintStream m_logger = null;
+    
+    /**
+     * Edited 2/25/2012
+     */
+    
+    GameAdapter adaptgame;
+    Evaluator  evalgame;
     
     
     Action sendInputText = new AbstractAction() {
@@ -219,9 +228,15 @@ public class GraphicalInterfaceJFrame extends JPanel {
             output(s);
         }
         m_story.computeUserImportantActions(m_game);
+        
+        
+        adaptgame = new GameAdapter();
+        evalgame = new Evaluator();
     }
 
     public void update() {
+        
+        
 
         if (m_actions_to_enqueue.size() > 0) {
             while (m_actions_to_enqueue.size() > 0) {
@@ -256,6 +271,13 @@ public class GraphicalInterfaceJFrame extends JPanel {
             }
 
         }
-
+        
+        // Unique drama management begins here
+   
+      evalgame.Update(m_game);
+      if(evalgame.checkPlayerStuck(m_story, m_game))
+      {
+          // use game adapter to provide hints based on next available action
+      }
     }
 }

@@ -21,6 +21,7 @@ public class SimpleNLP {
     static {
         action_synonyms.put("idle","idle");
         action_synonyms.put("go_to","go_to");
+        action_synonyms.put("goto","go_to");        // added 2/26/2012
         action_synonyms.put("go","go_to");
         action_synonyms.put("walk","go_to");
         action_synonyms.put("move","go_to");
