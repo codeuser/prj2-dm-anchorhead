@@ -11,6 +11,9 @@ public class Director {
     public States helpWantedState = States.HELP_NEEDED;
     public States busyState = States.BUSY;
     
+    public static final int HELP_SINCE_START = 20;
+    public static final int HELP_SINCE_ACTION = 25;
+    
     public boolean offerHint = false;
     public Calendar gameStart;
     
@@ -43,20 +46,26 @@ public class Director {
     
     public void MakeDecision()
     {        
+        Calendar gameNow = Calendar.getInstance();                      
+                    
+        double secondsSince = secondsBetween(gameStart.getTime(),gameNow.getTime());
+        
         if(gameeval.actionCount==0)
         {
-            Calendar gameNow = Calendar.getInstance();                      
-            if(secondsBetween(gameStart.getTime(),gameNow.getTime())>10)
-                offerHint=true;
-            
+            // if no actions have been taken for a while, then provide assistance
+            if(secondsSince>HELP_SINCE_START)
+                gameadapt.offerHint=true;            
         }
+        else
+            if(secondsSince>HELP_SINCE_ACTION)
+                gameadapt.offerHint=true;
         
         
     }
     
     public void Adapt()
     {
-        gameadapt.Adapt();
+        gameadapt.Adapt(gameeval);
     }
     
     public double secondsBetween(Date date1, Date date2)
