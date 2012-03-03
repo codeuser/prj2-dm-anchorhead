@@ -275,6 +275,17 @@ public class GraphicalInterfaceJFrame extends JPanel {
         
       directgame.updateGame(m_game, m_story);      
       directgame.MakeDecision();
-      directgame.Adapt();
+      //directgame.Adapt();
+      DoSomething(directgame.gameadapt);
+      
+    }
+    public void DoSomething(GameAdapter ag)
+    {
+        if(ag.offerHint)
+        {
+            String text = "whats?";
+            m_actions_to_enqueue.add(new IFAction("player","talk","player","reply",text));
+            
+        }
     }
 }

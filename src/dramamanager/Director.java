@@ -3,15 +3,19 @@ package dramamanager;
 import ifgameengine.IFGameState;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Dictionary;
 import storyengine.IFStory;
 
 public class Director {
 
     public States idleState = States.IDLE;
-    public States helpWantedState = States.HELP_NEEDED;
+    public States helpState = States.HELP_NEEDED;
     public States busyState = States.BUSY;
     
-    public static final int HELP_SINCE_START = 20;
+    public Dictionary<Integer,Integer> plot_visits;
+    public Dictionary<Integer,Integer> room_visits;
+    
+    public static final int HELP_SINCE_START = 2;
     public static final int HELP_SINCE_ACTION = 25;
     
     public boolean offerHint = false;
@@ -21,18 +25,21 @@ public class Director {
         HELP_NEEDED, IDLE, BUSY
     };   
     
-    public States directionState;
+    public States directState;
     
     public GameAdapter gameadapt;
     public Evaluator gameeval;
     
     public Director instance;
+    public double hintsPerHour;
+    public double hintsGiven;       // in 3 intervals - per hour
+    public double hintsTotal;
     
     public Director()
     {
         instance = this;
         gameStart = Calendar.getInstance();
-        directionState = idleState;
+        directState = idleState;
         
         gameadapt = new GameAdapter();
         gameeval = new Evaluator();
@@ -40,8 +47,8 @@ public class Director {
     
     public void updateGame(IFGameState gameStat, IFStory story)
     {
-        gameeval.update(gameStat);        
-        gameeval.checkPlayerStuck(story, gameStat);
+        gameeval.update(gameStat);  // check if user has done some action
+        //gameeval.checkPlayerStuck(story, gameStat);
     }
     
     public void MakeDecision()
@@ -59,6 +66,7 @@ public class Director {
         else
             if(secondsSince>HELP_SINCE_ACTION)
                 gameadapt.offerHint=true;
+        
         
         
     }

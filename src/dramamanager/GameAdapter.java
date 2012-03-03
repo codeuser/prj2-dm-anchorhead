@@ -14,7 +14,7 @@ public class GameAdapter {
     public void Adapt(Evaluator evalFindings)
     {
         // this is based on the findings of the evaluation function
-        //if(evalFindings.)
+        System.out.println("trying to offer hint");
     }
     
     public void ProvideHint(String hintText)

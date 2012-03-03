@@ -15,6 +15,7 @@ public class IFPlotPoint {
 	
 	String m_name = null;
 	String m_plot = null;
+        String m_hint = null;           // ADDED FOR PROJECT CS680
 	IFCondition m_precondition = null; 
 	IFCondition m_trigger = null;
 	LinkedList<IFAction> m_effects = new LinkedList<IFAction>();
@@ -37,6 +38,7 @@ public class IFPlotPoint {
 
 		pp.m_name = root.getAttributeValue("name");
 		pp.m_plot = root.getAttributeValue("plot");
+                pp.m_hint = root.getAttributeValue("hint");
 		
 		// preconditions
 		Element ppe = root.getChild("preconditions");

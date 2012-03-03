@@ -6,6 +6,7 @@ import ifgameengine.IFGameState;
 import ifgameengine.UserActionTrace;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Dictionary;
 
 import java.util.List;
 import storyengine.IFPlotPoint;
@@ -16,6 +17,7 @@ public class Evaluator {
     
     public double secondsSinceLastAction;
     public double secondsToFinishTyping;
+    public String lastPlot;
     public int actionCount = -1;
     public int lastActionCount = -1;
     public int zeroActionCount = 0;
@@ -24,6 +26,8 @@ public class Evaluator {
     
     
     public List<IFAction> userActions = null;
+    
+    public Dictionary<String,Integer> hintsUsed;
     
     public Evaluator()
     {
@@ -43,13 +47,22 @@ public class Evaluator {
         // if no actions, then exit
         if (actionCount==0)
             return;
-        
-        
-        System.out.println("Evaluating...");
-               
+                
         userActions = m_game.getSucceededActions();
+        Calendar lastActionDate = userActions.get(0).actionDate;
+        IFAction lastAction = userActions.get(0);
+        for(IFAction eachAction: userActions)
+        {
+            if(eachAction.actionDate.after(lastActionDate))
+            {
+                lastAction = eachAction;
+                lastActionDate = eachAction.actionDate;
+            }
+        }
         
-        System.out.println("Action contains" + userTrace.size());
+        
+        
+        //System.out.println("Action contains" + userTrace.size());
         //IFAction userAction = userTrace.getLastUserAction();
         
         Calendar calNow = Calendar.getInstance();      
