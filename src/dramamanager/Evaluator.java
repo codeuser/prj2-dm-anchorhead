@@ -14,9 +14,14 @@ import storyengine.IFStory;
 
 public class Evaluator {
     private static final int MAX_ERRORS=3;
-    
+    public static final int IDLE_FROM_START = 10;   // SECONDS BETWEEN START OF GAME TO IDLE STATE
+    public static final int IDLE_BETWEEN_ACTIONS = 25; // SECONDS BETWEEN TWO ACTIONS TO IDLE STATE
+  
+    private double secondsSinceGameStarted;
     public double secondsSinceLastAction;
     public double secondsToFinishTyping;
+    public boolean userStarted;
+    public boolean playerStuck;
     public String lastPlot;
     public int actionCount = -1;
     public int lastActionCount = -1;
@@ -38,10 +43,23 @@ public class Evaluator {
     {
          secondsSinceLastAction = 0;   
          secondsToFinishTyping = 0;
+         userStarted = false;
+         playerStuck = false;
     }
     
-    public void update(IFGameState m_game) {
+    public void update(IFGameState m_game, Calendar startTime) {
+        // used to determine time since last action
+         Calendar gameNow = Calendar.getInstance();
+        secondsSinceGameStarted = secondsBetween(startTime.getTime(), gameNow.getTime());
         
+        if(m_game.getUserActionTrace().size()>0)
+        {
+            userStarted = true;
+            secondsSinceLastAction = secondsBetween(m_game.getUserActionTrace().getLastUserAction().actionDate.getTime(), gameNow.getTime());           
+            System.out.println("Time since last action (sec): " + secondsSinceLastAction);
+        }
+               
+    /*    
         UserActionTrace userTrace = m_game.getUserActionTrace();
         actionCount = userTrace.size();
         // if no actions, then exit
@@ -49,6 +67,8 @@ public class Evaluator {
             return;
                 
         userActions = m_game.getSucceededActions();
+        if(userActions.size()==0)
+            return;
         Calendar lastActionDate = userActions.get(0).actionDate;
         IFAction lastAction = userActions.get(0);
         for(IFAction eachAction: userActions)
@@ -70,16 +90,57 @@ public class Evaluator {
        // int seconds = userAction.actionDate.MINUTE;
         
        // System.out.println("Time since last action: " + seconds);       
-                        
+      */                  
+    }   
+    
+    public void updateState()
+    {
+       if(userStarted)
+        {
+            if(secondsSinceLastAction>IDLE_BETWEEN_ACTIONS)
+                playerStuck=true;
+            else
+                playerStuck=false;
+        }
+        else if(secondsSinceGameStarted>IDLE_FROM_START)
+            playerStuck=true;
+        else
+            playerStuck=false;
     }
     
-    public boolean checkPlayerStuck(IFStory playerStory, IFGameState m_game)
+    public void checkPlayerStuck(IFGameState m_game, IFStory playerStory)
     {
+        
+        
+        
+        
+        /*
         playerStory.computeUserImportantActions(m_game);
         
         for(IFPlotPoint p: playerStory.getPlotPoints())
             System.out.println(p.getName());
+            * 
+            */      
         
-        return false;
+    }
+    
+    public double secondsBetween(Date date1, Date date2)
+    {
+        long timeDiff;
+        double secondDiff = 0;
+        timeDiff = date2.getTime()-date1.getTime();
+        secondDiff = (double) timeDiff/1000;
+        
+        return secondDiff;
+    }
+    
+    public void resetGameTime()
+    {
+        secondsSinceGameStarted=0;
+    }
+    
+    public double getGameTime()
+    {
+        return secondsSinceGameStarted;
     }
 }

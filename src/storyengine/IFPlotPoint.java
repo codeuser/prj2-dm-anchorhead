@@ -15,6 +15,7 @@ public class IFPlotPoint {
 	
 	String m_name = null;
 	String m_plot = null;
+        boolean m_isBasic = false;
         String m_hint = null;           // ADDED FOR PROJECT CS680
 	IFCondition m_precondition = null; 
 	IFCondition m_trigger = null;
@@ -39,6 +40,7 @@ public class IFPlotPoint {
 		pp.m_name = root.getAttributeValue("name");
 		pp.m_plot = root.getAttributeValue("plot");
                 pp.m_hint = root.getAttributeValue("hint");
+                pp.m_isBasic =Boolean.getBoolean(root.getAttributeValue("isbasic"));
 		
 		// preconditions
 		Element ppe = root.getChild("preconditions");
@@ -91,4 +93,13 @@ public class IFPlotPoint {
 		return m_endgame;
 	}
 	
+        public String getHint() 
+        {
+            return m_hint;
+        }
+        
+        public boolean getBasicStatus()
+        {
+            return m_isBasic;
+        }
 }

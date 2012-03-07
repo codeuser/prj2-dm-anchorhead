@@ -64,7 +64,7 @@
 		</trigger>
 	</plotpoint>	
 	
-	<plotpoint name="get-card" plot="william" setsup="read-library-book" hint="Perhaps the care should be taken...">
+	<plotpoint name="get-card" plot="william" setsup="read-library-book" hint="Perhaps the card should be taken...">
 		<trigger>
 			<condition type="action">
 				<action type="take" actor="player"
@@ -73,7 +73,7 @@
 		</trigger>
 	</plotpoint>	
 
-	<plotpoint name="get-safe-combo" plot="evil-god" setsup="open-safe" thought="safe" hint="Something tells you that you should probably not leave the combination here...">
+	<plotpoint name="get-safe-combo" plot="evil-god" setsup="open-safe" thought="safe" hint="Something tells you there should be a safe in this type of house somewhere..." isbasic="true">
 		<trigger>
 			<condition type="action">
 				<action type="take" actor="player"
@@ -100,7 +100,7 @@
 		</trigger>
 	</plotpoint>	
 	
-	<plotpoint name="read-bedroom-pages" plot="william" thought="william" hint="The text on the pages may provide more about your quest...">
+	<plotpoint name="read-bedroom-pages" plot="william" thought="william" hint="The text on the pages may provide more about your quest..." isbasic="true">
 		<trigger>
 			<condition type="action">
 				<action type="examine" actor="player"

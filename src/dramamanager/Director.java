@@ -15,8 +15,6 @@ public class Director {
     public Dictionary<Integer,Integer> plot_visits;
     public Dictionary<Integer,Integer> room_visits;
     
-    public static final int HELP_SINCE_START = 2;
-    public static final int HELP_SINCE_ACTION = 25;
     
     public boolean offerHint = false;
     public Calendar gameStart;
@@ -45,35 +43,33 @@ public class Director {
         gameeval = new Evaluator();
     }
     
-    public void updateGame(IFGameState gameStat, IFStory story)
+    public void updateGame(IFGameState gameStat)
     {
-        gameeval.update(gameStat);  // check if user has done some action
-        //gameeval.checkPlayerStuck(story, gameStat);
-    }
+        gameeval.update(gameStat, gameStart);  // check if user has done some action
+        gameeval.updateState();
+//        gameeval.checkPlayerStuck(gameStat, story);
+                                                                                                                                            }
     
-    public void MakeDecision()
-    {        
+    public void MakeDecision(IFStory story)
+    {       
         Calendar gameNow = Calendar.getInstance();                      
                     
         double secondsSince = secondsBetween(gameStart.getTime(),gameNow.getTime());
         
-        if(gameeval.actionCount==0)
+        if(gameeval.playerStuck)
         {
-            // if no actions have been taken for a while, then provide assistance
-            if(secondsSince>HELP_SINCE_START)
-                gameadapt.offerHint=true;            
-        }
+            directState=States.HELP_NEEDED;
+            gameadapt.Adapt(gameeval, story);
+            gameadapt.offerHint=true;
+        }      
         else
-            if(secondsSince>HELP_SINCE_ACTION)
-                gameadapt.offerHint=true;
-        
-        
+            gameadapt.offerHint=false;
         
     }
     
     public void Adapt()
     {
-        gameadapt.Adapt(gameeval);
+//        gameadapt.Adapt(gameeval);
     }
     
     public double secondsBetween(Date date1, Date date2)
