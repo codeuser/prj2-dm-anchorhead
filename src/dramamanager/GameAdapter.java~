@@ -1,0 +1,65 @@
+package dramamanager;
+
+import java.util.ArrayList;
+import storyengine.IFPlotPoint;
+import storyengine.IFStory;
+import storyengine.IFStoryState;
+
+public class GameAdapter {
+
+    public static GameAdapter instance;
+    public boolean offerHint;
+    
+    public GameAdapter()
+    {
+        instance = this;
+        offerHint = false;
+    }
+    
+    public void Adapt(Evaluator evalFindings, IFStory m_story, IFStoryState m_state)
+    {
+        // this is based on the findings of the evaluation function
+        
+        if(evalFindings.userStarted==false)
+        {
+           ProvideHint(getStartingHint(m_story, m_state));
+           evalFindings.resetGameTime();
+        }
+    }
+    
+    public void ProvideHint(String hintText)
+    {
+        
+    }
+    
+    public String getStartingHint(IFStory m_story, IFStoryState m_state)
+    {
+        int index;
+        int randIndex;
+        double randVal = Math.random();
+        boolean goodRand = false;
+        randIndex = 0;
+                
+        ArrayList<IFPlotPoint> starters = new ArrayList<IFPlotPoint>();
+        
+        for(IFPlotPoint eachPoint: m_story.getPlotPoints())
+        {
+            if(eachPoint.getPrecondition()==null)
+            {
+                //System.out.println("no preconditions");
+                //if(eachPoint.getBasicStatus())
+                    starters.add(eachPoint);    
+            }
+        }
+        
+        while(!goodRand)        // make sure that this doesn't cause and out of bounds error
+        {
+            randIndex = (int) Math.round(randVal*starters.size());
+            if(randIndex>=0 && randIndex<=starters.size()-1)
+                goodRand=true;
+        }
+        System.out.print(randIndex);
+        return starters.get(randIndex).getHint();
+    }
+
+}

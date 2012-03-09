@@ -5,12 +5,17 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Dictionary;
 import storyengine.IFStory;
+import storyengine.IFStoryState;
 
 public class Director {
 
     public States idleState = States.IDLE;
     public States helpState = States.HELP_NEEDED;
     public States busyState = States.BUSY;
+    
+    public States helpAll = States.HELP_ALL;
+    public States helpWill = States.HELP_WILL;
+    public States helpEvg = States.HELP_EVG;
     
     public Dictionary<Integer,Integer> plot_visits;
     public Dictionary<Integer,Integer> room_visits;
@@ -20,10 +25,11 @@ public class Director {
     public Calendar gameStart;
     
     public enum States {
-        HELP_NEEDED, IDLE, BUSY
+        HELP_NEEDED, IDLE, BUSY, HELP_ALL, HELP_WILL, HELP_EVG
     };   
     
     public States directState;
+    public States playerState;
     
     public GameAdapter gameadapt;
     public Evaluator gameeval;
@@ -37,7 +43,7 @@ public class Director {
     {
         instance = this;
         gameStart = Calendar.getInstance();
-        directState = idleState;
+        assignState();
         
         gameadapt = new GameAdapter();
         gameeval = new Evaluator();
@@ -50,7 +56,7 @@ public class Director {
 //        gameeval.checkPlayerStuck(gameStat, story);
                                                                                                                                             }
     
-    public void MakeDecision(IFStory story)
+    public void MakeDecision(IFStory story, IFGameState game_state, IFStoryState story_state)
     {       
         Calendar gameNow = Calendar.getInstance();                      
                     
@@ -58,8 +64,8 @@ public class Director {
         
         if(gameeval.playerStuck)
         {
-            directState=States.HELP_NEEDED;
-            gameadapt.Adapt(gameeval, story);
+//            directState=States.HELP_NEEDED;
+            gameadapt.Adapt(gameeval, game_state, story, story_state, directState);
             gameadapt.offerHint=true;
         }      
         else
@@ -81,4 +87,29 @@ public class Director {
         
         return secondDiff;
     }
+    
+    public void assignState()
+    {
+        int stateIndex = 3;
+        stateIndex = (int) Math.round( Math.random()*stateIndex);
+        
+        switch (stateIndex)
+        {
+                case 0:
+                    directState = States.HELP_ALL;
+                    break;
+                case 1:
+                    directState = States.HELP_WILL;
+                    break;
+                case 2:
+                    directState = States.HELP_EVG;
+                    break;
+                default:
+                    directState = States.HELP_ALL;
+                    break;
+        }
+        
+        
+    }
+    
 }

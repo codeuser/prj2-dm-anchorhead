@@ -49,7 +49,7 @@
 		</effects>
 	</plotpoint>	
 	
-	<plotpoint name="find-magic-shop" plot="evil-god" hint="Perhaps you should try to locate a certain shop that sells magical items...">
+	<plotpoint name="find-magic-shop" hint="Perhaps you should try to locate a certain shop that sells magical items...">
 		<trigger>
 			<condition type="location" character="player" location="magic-shop"/>
 		</trigger>

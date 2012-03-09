@@ -274,16 +274,19 @@ public class GraphicalInterfaceJFrame extends JPanel {
         // Unique drama management begins here
         
       directgame.updateGame(m_game);      
-      directgame.MakeDecision(m_story);
+      directgame.MakeDecision(m_story, m_game, m_story_state);
+      //directgame.MakeDecision(m_story, m_story_state);
       //directgame.Adapt();
+      
       DoSomething(directgame.gameadapt);
                                                      
     }
+    
     public void DoSomething(GameAdapter ag)
     {
         if(ag.offerHint)
         {
-            String text = ag.getStartingHint(m_story);
+            String text = ag.plotHint.getHint();
             m_actions_to_enqueue.add(new IFAction("player","talk","player","reply",text));
             
         }
