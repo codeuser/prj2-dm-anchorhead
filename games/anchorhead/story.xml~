@@ -49,13 +49,13 @@
 		</effects>
 	</plotpoint>	
 	
-	<plotpoint name="find-magic-shop" hint="Perhaps you should try to locate a certain shop that sells magical items...">
+	<plotpoint name="find-magic-shop" plot="evil-god" hint="Perhaps you should try to locate a certain shop that sells magical items...">
 		<trigger>
 			<condition type="location" character="player" location="magic-shop"/>
 		</trigger>
 	</plotpoint>		
 	
-	<plotpoint name="get-silver-locket" plot="william" thought="william" hint="Perhaps the locket should be taken...">
+	<plotpoint name="get-silver-locket" plot="william" thought="william" hint="Try to find the silver-locket...">
 		<trigger>
 			<condition type="action">
 				<action type="take" actor="player"
@@ -64,7 +64,7 @@
 		</trigger>
 	</plotpoint>	
 	
-	<plotpoint name="get-card" plot="william" setsup="read-library-book" hint="Perhaps the card should be taken...">
+	<plotpoint name="get-card" plot="william" setsup="read-library-book" hint="Try to find the library-card...">
 		<trigger>
 			<condition type="action">
 				<action type="take" actor="player"

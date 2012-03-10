@@ -33,11 +33,11 @@ public class GameAdapter {
     {
         // this is based on the findings of the evaluation function
         
-        if(evalFindings.userStarted==false)
-        {
+        //if(evalFindings.userStarted==false)
+        //{
            plotHint = ProvideHint(game_state, m_story, m_state, director);
            evalFindings.resetGameTime();
-        }
+        //}
     }
     
     public IFPlotPoint ProvideHint(IFGameState game_state, IFStory m_story, IFStoryState m_state, States director)
@@ -48,6 +48,8 @@ public class GameAdapter {
         IFPlotPoint hintPlot = null;
         
         m_state.getStory().computeUserImportantActions(game_state);
+        
+        //System.out.println("director hint state is " + director.toString());
         
         if(director.equals(States.HELP_ALL))
 	{
@@ -61,7 +63,7 @@ public class GameAdapter {
         else if(director.equals(States.HELP_EVG))
         {
             isFiltered = true;
-            filterString = "evil_god";
+            filterString = "evil-god";
         }
               
             // loop through the available plots to see which one can be 
@@ -69,16 +71,29 @@ public class GameAdapter {
             int points = m_story.getPlotPoints().size();
             int randIndex = (int) (Math.round(points*Math.random()));
             
+            
             for(IFPlotPoint eachPoint: m_state.getStory().getPlotPoints())
-            {
+            {   
+                if((eachPoint.getPlot()==null)||(eachPoint.getHint()==null))
+                    continue;
+                
+                boolean completedPreconditions;
                 IFCondition currentCondition = eachPoint.getPrecondition();
+                if(currentCondition==null)
+                    completedPreconditions=true;
+                else
+                    completedPreconditions=currentCondition.evaluate(game_state, m_state);
+                
                 if(isFiltered)
                 {
-                    System.out.println("Current plot is " + eachPoint.getName());
-                    if(currentCondition == null||currentCondition.evaluate(game_state, m_state))
+                    //System.out.println("Current plot is " + eachPoint.getName());
+                   // System.out.println("Current plot is " + eachPoint.getPlot());
+                    if(currentCondition == null||completedPreconditions)
                         if(eachPoint.getPlot().equals(filterString) && !PlotExceeded(eachPoint))
                         {                               
-                            UpdateHints(hintPlot);   
+                            //System.out.println("Current plot is " + eachPoint.getName());
+                            //System.out.println("Current plot is " + eachPoint.getPlot());
+                            UpdateHints(eachPoint);   
                             hintPlot = eachPoint;                            
                             break;
                         }
@@ -87,8 +102,10 @@ public class GameAdapter {
                     if(currentCondition == null || currentCondition.evaluate(game_state, m_state))
                     {
                         if(!PlotExceeded(eachPoint))
-                        {                            
-                            UpdateHints(hintPlot);
+                        {   
+                            //System.out.println("Current plot is " + eachPoint.getName());
+                           // System.out.println("Current plot is " + eachPoint.getPlot());
+                            UpdateHints(eachPoint);
                             hintPlot = eachPoint;
                             break;
                         }
@@ -125,7 +142,7 @@ public class GameAdapter {
             if(randIndex>=0 && randIndex<=starters.size()-1)
                 goodRand=true;
         }
-        System.out.print(randIndex);
+    //    System.out.print(randIndex);
         return starters.get(randIndex).getHint();
     }
     
@@ -147,6 +164,8 @@ public class GameAdapter {
 
     public void UpdateHints(IFPlotPoint newHint)
     {
+      //  System.out.println("hints given are:" + listHintsGiven.size());
+      //  System.out.println("for " + newHint.getHint() + ": " + listHintsGiven.get(newHint.getHint()));
         if(listHintsGiven.isEmpty())
             listHintsGiven.put(newHint.getHint(), 1);
         else if(listHintsGiven.containsKey(newHint.getHint()))

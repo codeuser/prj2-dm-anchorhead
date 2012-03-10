@@ -55,7 +55,7 @@
 		</trigger>
 	</plotpoint>		
 	
-	<plotpoint name="get-silver-locket" plot="william" thought="william" hint="Perhaps the locket should be taken...">
+	<plotpoint name="get-silver-locket" plot="william" thought="william" hint="Try to find the silver-locket...">
 		<trigger>
 			<condition type="action">
 				<action type="take" actor="player"
@@ -64,7 +64,7 @@
 		</trigger>
 	</plotpoint>	
 	
-	<plotpoint name="get-card" plot="william" setsup="read-library-book" hint="Perhaps the card should be taken...">
+	<plotpoint name="get-card" plot="william" setsup="read-library-book" hint="Try to find the library-card...">
 		<trigger>
 			<condition type="action">
 				<action type="take" actor="player"
@@ -73,7 +73,7 @@
 		</trigger>
 	</plotpoint>	
 
-	<plotpoint name="get-safe-combo" plot="evil-god" setsup="open-safe" thought="safe" hint="Something tells you there should be a safe in this type of house somewhere..." isbasic="true">
+	<plotpoint name="get-safe-combo" plot="evil-god" setsup="open-safe" thought="safe" hint="You'll need the safe-combo..." isbasic="true">
 		<trigger>
 			<condition type="action">
 				<action type="take" actor="player"
@@ -92,6 +92,9 @@
 	</plotpoint>		
 
 	<plotpoint name="read-basement-clippings" plot="william" thought="family-history" hint="There's something scribbled on the basement clippings...">
+		<preconditions>
+			<condition type="location" character="player" location="basement"/>
+		</preconditions>
 		<trigger>
 			<condition type="action">
 				<action type="examine" actor="player"
@@ -101,6 +104,9 @@
 	</plotpoint>	
 	
 	<plotpoint name="read-bedroom-pages" plot="william" thought="william" hint="The text on the pages may provide more about your quest..." isbasic="true">
+		<preconditions>
+			<condition type="location" characer="player" location="bedroom"/>
+		</preconditions>
 		<trigger>
 			<condition type="action">
 				<action type="examine" actor="player"
@@ -121,7 +127,11 @@
 		</trigger>
 	</plotpoint>	
 	
-	<plotpoint name="get-crypt-key" plot="william" thought="crypt" hint="Something tells you you'll need the crypt-key later...">
+	<plotpoint name="get-crypt-key" plot="william" thought="crypt" hint="You'll need the crypt-key...">
+		<preconditions>
+			<condition type="location" characer="player" location="basement"/>
+			<condition type="not"><condition type="plotpoint" name="get-crypt-key"/></condition>
+		</preconditions>
 		<trigger>
 			<condition type="action">
 				<action type="take" actor="player"
@@ -348,8 +358,12 @@
 	
 	<plotpoint name="start-talking-to-bum" plot="william" thought="bum" setsup="give-bum-flask" hint="That bum looks like he knows something...">
 		<preconditions>
-				<condition type="not"><condition type="plotpoint" name="start-talking-to-bum"/></condition>
-		</preconditions>
+				<condition type="and">
+					<condition type="not"><condition type="plotpoint" name="start-talking-to-bum"/></condition>
+					<condition type="location" character="player" location="park"/>
+				</condition>		
+		</preconditions>		
+		
 		<trigger>
 			<condition type="action">
 				<action type="talk" actor="player"
@@ -449,7 +463,10 @@
 	
 	<plotpoint name="ask-bum-about-anna" plot="william" thought="bum" hint="The bum reminds you of Anna...">
 		<preconditions>
-			<condition type="plotpoint" name="start-talking-to-bum"/>
+			<condition type="and">
+				<condition type="plotpoint" name="start-talking-to-bum"/>
+				<condition type="location" character="player" location="park"/>
+			</condition>
 		</preconditions>
 		<trigger>
 			<condition type="action">
@@ -511,7 +528,10 @@
 	
 	<plotpoint name="ask-bum-about-william" plot="william" thought="bum" hint="The bum grumbles something about 'William'...">
 		<preconditions>
-			<condition type="plotpoint" name="start-talking-to-bum"/>
+			<condition type="and">
+				<condition type="location" character="player" location="park"/>
+				<condition type="plotpoint" name="start-talking-to-bum"/>
+			</condition>
 		</preconditions>
 		<trigger>
 			<condition type="action">
@@ -536,9 +556,11 @@
 		</effects>
 	</plotpoint>
 	
-	<plotpoint name="ask-bum-about-crypt" plot="william" thought="bum crypt" motivatedby="find-williams-coffin" setsup="find-williams-coffin" hint="The bum's eyes keep shifting towards the crypt...">
+	<plotpoint name="ask-bum-about-crypt" plot="william" thought="bum crypt" motivatedby="find-williams-coffin" setsup="find-williams-coffin" hint="The bum grumbles something about the crypt...">
 		<preconditions>
-			<condition type="plotpoint" name="start-talking-to-bum"/>
+			<condition type="and">
+				<condition type="plotpoint" name="start-talking-to-bum"/>
+			</condition>
 		</preconditions>
 		<trigger>
 			<condition type="action">
@@ -559,9 +581,13 @@
 		</effects>
 	</plotpoint>	
 	
-	<plotpoint name="ask-bum-about-secrets" plot="william" thought="bum crypt" motivatedby="find-williams-coffin" setsup="find-williams-coffin" hint="It seems like the bum is hiding something...">
+	<plotpoint name="ask-bum-about-secrets" plot="william" thought="bum crypt" motivatedby="find-williams-coffin" setsup="find-williams-coffin" hint="The bum said something about secrets...">
 		<preconditions>
-			<condition type="plotpoint" name="start-talking-to-bum"/>
+			<condition type="and">
+				<condition type="plotpoint" name="give-bum-flask"/>
+				<condition type="location" character="player" location="park"/>
+				<condition type="plotpoint" name="start-talking-to-bum"/>
+			</condition>			
 		</preconditions>
 		<trigger>
 			<condition type="action">
@@ -583,6 +609,12 @@
 	</plotpoint>	
 	
 	<plotpoint name="show-bum-skull" plot="william" thought="bum william"  hint="The bums eyes keep shifting nervously towards the skull...">
+		<preconditions>
+			<condition type="and">
+				<condition type="plotpoint" name="get-skull"/>
+				<condition type="location" characer="player" location="park"/>
+			</condition>
+		</preconditions>
 		<trigger>
 			<condition type="action">
 				<action type="give" actor="player"

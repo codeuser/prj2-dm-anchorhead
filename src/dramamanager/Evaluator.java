@@ -14,8 +14,8 @@ import storyengine.IFStory;
 
 public class Evaluator {
     private static final int MAX_ERRORS=3;
-    public static final int IDLE_FROM_START = 1;   // SECONDS BETWEEN START OF GAME TO IDLE STATE
-    public static final int IDLE_BETWEEN_ACTIONS = 5; // SECONDS BETWEEN TWO ACTIONS TO IDLE STATE
+    public static final int IDLE_FROM_START = 10;   // SECONDS BETWEEN START OF GAME TO IDLE STATE
+    public static final int IDLE_BETWEEN_ACTIONS = 10; // SECONDS BETWEEN TWO ACTIONS TO IDLE STATE
   
     private double secondsSinceGameStarted;
     public double secondsSinceLastAction;
@@ -54,7 +54,10 @@ public class Evaluator {
         
         if(m_game.getUserActionTrace().size()>0)
         {
+            if(m_game.getUserActionTrace().getLastUserAction().actionDate==null)
+                return;
             userStarted = true;
+            //System.out.println("last action was: " + m_game.getUserActionTrace().getLastUserAction().actionDate);
             secondsSinceLastAction = secondsBetween(m_game.getUserActionTrace().getLastUserAction().actionDate.getTime(), gameNow.getTime());           
             //System.out.println("Time since last action (sec): " + secondsSinceLastAction);
         }

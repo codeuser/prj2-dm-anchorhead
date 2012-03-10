@@ -92,7 +92,7 @@ public class Director {
     {
         int stateIndex = 3;
         stateIndex = (int) Math.round( Math.random()*stateIndex);
-        
+              
         switch (stateIndex)
         {
                 case 0:

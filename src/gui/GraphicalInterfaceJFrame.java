@@ -273,20 +273,37 @@ public class GraphicalInterfaceJFrame extends JPanel {
         
         // Unique drama management begins here
         
-      directgame.updateGame(m_game);      
-      directgame.MakeDecision(m_story, m_game, m_story_state);
-      //directgame.MakeDecision(m_story, m_story_state);
-      //directgame.Adapt();
+      boolean useHints;
       
-      DoSomething(directgame.gameadapt);
+      // option for using hints
+      useHints=true;
+        
+      if(useHints)
+      {
+        directgame.updateGame(m_game);      
+        directgame.MakeDecision(m_story, m_game, m_story_state);
+        //directgame.MakeDecision(m_story, m_story_state);
+        //directgame.Adapt();
+
+        DoSomething(directgame.gameadapt);
+      }
                                                      
     }
     
     public void DoSomething(GameAdapter ag)
     {
+        
         if(ag.offerHint)
         {
-            String text = ag.plotHint.getHint();
+            String text = null;
+            if(ag.plotHint==null)
+                text = "The hero shrugs at what to do next...";
+            else
+                text = ag.plotHint.getHint();
+				
+            if(m_actions_to_enqueue.contains(new IFAction("player","talk","player","reply",text)))
+                return;
+				
             m_actions_to_enqueue.add(new IFAction("player","talk","player","reply",text));
             
         }

@@ -58,7 +58,7 @@ public class GameAdapter {
             if(randIndex>=0 && randIndex<=starters.size()-1)
                 goodRand=true;
         }
-        System.out.print(randIndex);
+        //System.out.print(randIndex);
         return starters.get(randIndex).getHint();
     }
 
