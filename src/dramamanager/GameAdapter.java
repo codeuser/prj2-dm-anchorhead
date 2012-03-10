@@ -4,6 +4,8 @@ import dramamanager.Director.States;
 import ifgameengine.IFGameState;
 import java.util.ArrayList;
 import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Map;
 import storyengine.IFCondition;
 import storyengine.IFPlotPoint;
 import storyengine.IFStory;
@@ -14,7 +16,8 @@ public class GameAdapter {
     public static GameAdapter instance;
     public boolean offerHint;
     public IFPlotPoint plotHint;
-    public ArrayList<GivenHint> listHintsGiven;
+    //public ArrayList<GivenHint> listHintsGiven;
+    public Map<String,Integer> listHintsGiven;
     public static final int MAX_HINTS=3;
     
     public GameAdapter()
@@ -22,7 +25,8 @@ public class GameAdapter {
         instance = this;
         offerHint = false;
         plotHint = null;
-        listHintsGiven = new ArrayList<GivenHint>();
+        //listHintsGiven = new ArrayList<GivenHint>();
+        listHintsGiven = new HashMap<String,Integer>();
     }
     
     public void Adapt(Evaluator evalFindings, IFGameState game_state, IFStory m_story, IFStoryState m_state, States director)
@@ -70,12 +74,11 @@ public class GameAdapter {
                 IFCondition currentCondition = eachPoint.getPrecondition();
                 if(isFiltered)
                 {
-                    
+                    System.out.println("Current plot is " + eachPoint.getName());
                     if(currentCondition == null||currentCondition.evaluate(game_state, m_state))
                         if(eachPoint.getPlot().equals(filterString) && !PlotExceeded(eachPoint))
-                        {   
-                            GivenHint newHint = new GivenHint(hintPlot);
-                            UpdateHints(newHint);   
+                        {                               
+                            UpdateHints(hintPlot);   
                             hintPlot = eachPoint;                            
                             break;
                         }
@@ -84,9 +87,8 @@ public class GameAdapter {
                     if(currentCondition == null || currentCondition.evaluate(game_state, m_state))
                     {
                         if(!PlotExceeded(eachPoint))
-                        {
-                            GivenHint newHint = new GivenHint(hintPlot);
-                            UpdateHints(newHint);
+                        {                            
+                            UpdateHints(hintPlot);
                             hintPlot = eachPoint;
                             break;
                         }
@@ -134,22 +136,22 @@ public class GameAdapter {
             exceedBool=false;
         else
         {
-            for(GivenHint eachHint: listHintsGiven)
-            {
-                if(plot.equals(eachHint.getPlot()))
-                    if(eachHint.getTimesGiven()==MAX_HINTS)
-                        exceedBool=true;
-            }
+            if(listHintsGiven.containsKey(plot.getHint()))                
+               if(listHintsGiven.get(plot.getHint())==MAX_HINTS)
+                   exceedBool=true;
         }
+        
         
         return exceedBool;
     }
 
-    public void UpdateHints(GivenHint newHint)
+    public void UpdateHints(IFPlotPoint newHint)
     {
-        if(listHintsGiven.contains(newHint))
-            listHintsGiven.get(listHintsGiven.indexOf(newHint)).increment();
+        if(listHintsGiven.isEmpty())
+            listHintsGiven.put(newHint.getHint(), 1);
+        else if(listHintsGiven.containsKey(newHint.getHint()))
+            listHintsGiven.put(newHint.getHint(),listHintsGiven.get(newHint.getHint())+1);
         else
-            listHintsGiven.add(newHint);
+            listHintsGiven.put(newHint.getHint(), 1);
     }
 }
