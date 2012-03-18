@@ -10,6 +10,7 @@ import ifgameengine.IFTileManager;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.*;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.Properties;
@@ -32,6 +33,8 @@ public class GraphicalInterfaceJFrame extends JPanel {
     JTextPane m_inventory = null;
     String m_focus_character = "player";
     static PrintStream m_logger = null;
+    
+    public static Calendar gameInit;
     
     /**
      * Edited 2/25/2012
@@ -64,6 +67,7 @@ public class GraphicalInterfaceJFrame extends JPanel {
 
     public static void main(String s[]) throws IOException 
     {
+        gameInit = Calendar.getInstance();
         String loggerName = "IF-log-" + new Date().getTime() + ".txt";
         m_logger = new PrintStream(new FileOutputStream(new File(loggerName)));
 
@@ -155,7 +159,7 @@ public class GraphicalInterfaceJFrame extends JPanel {
                 e.printStackTrace();
             }
         }
-
+        System.out.println("Time spent (seconds): " + secondsBetween(gameInit.getTime(),Calendar.getInstance().getTime()));
         System.exit(0);
 
     }
@@ -308,4 +312,15 @@ public class GraphicalInterfaceJFrame extends JPanel {
             
         }
     }
+    
+    public static double secondsBetween(Date date1, Date date2)
+    {
+        long timeDiff;
+        double secondDiff = 0;
+        timeDiff = date2.getTime()-date1.getTime();
+        secondDiff = (double) timeDiff/1000;
+        
+        return secondDiff;
+    }
+
 }
