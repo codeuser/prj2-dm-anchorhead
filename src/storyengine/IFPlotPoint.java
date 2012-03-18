@@ -1,6 +1,7 @@
 package storyengine;
 
 import ifgameengine.IFAction;
+import java.util.Calendar;
 
 import java.util.LinkedList;
 
@@ -17,6 +18,7 @@ public class IFPlotPoint {
 	String m_plot = null;
         boolean m_isBasic = false;
         String m_hint = null;           // ADDED FOR PROJECT CS680
+        public static Calendar plotDate;
 	IFCondition m_precondition = null; 
 	IFCondition m_trigger = null;
 	LinkedList<IFAction> m_effects = new LinkedList<IFAction>();
@@ -40,6 +42,7 @@ public class IFPlotPoint {
 		pp.m_name = root.getAttributeValue("name");
 		pp.m_plot = root.getAttributeValue("plot");
                 pp.m_hint = root.getAttributeValue("hint");
+                //plotDate = Calendar.getInstance();
                 pp.m_isBasic =Boolean.getBoolean(root.getAttributeValue("isbasic"));
 		
 		// preconditions

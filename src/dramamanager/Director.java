@@ -1,9 +1,11 @@
 package dramamanager;
 
+import ifgameengine.IFAction;
 import ifgameengine.IFGameState;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Dictionary;
+import storyengine.IFPlotPoint;
 import storyengine.IFStory;
 import storyengine.IFStoryState;
 
@@ -112,4 +114,22 @@ public class Director {
         
     }
     
+    public void OutUserTrace(IFGameState game_state)
+    {        
+        System.out.println("action,object,datetime,timeSpent");
+        System.out.println("gamestart,null,"+gameStart.getTime()+",");
+        for(IFAction eachAction: game_state.getUserActionTrace().getActions())
+        {
+            System.out.println(eachAction.getType().toString()+","+eachAction.getObject()+","+eachAction.actionDate.getTime()+",");            
+        }
+        
+    }
+    
+    public void OutUserTrace(IFStoryState story_state)
+    {
+     for(IFPlotPoint eachPlot: story_state.getPlotPointsVisited())
+        {
+            System.out.println(eachPlot.plotDate.getTime().toString() + " plot: " + eachPlot.getName());
+        }
+    }
 }

@@ -40,7 +40,7 @@ public class GraphicalInterfaceJFrame extends JPanel {
      * Edited 2/25/2012
      */
     
-    public Director directgame;
+    public static Director directgame;
     
     
     Action sendInputText = new AbstractAction() {
@@ -159,6 +159,7 @@ public class GraphicalInterfaceJFrame extends JPanel {
                 e.printStackTrace();
             }
         }
+        directgame.OutUserTrace(game.m_game);
         System.out.println("Time spent (seconds): " + secondsBetween(gameInit.getTime(),Calendar.getInstance().getTime()));
         System.exit(0);
 

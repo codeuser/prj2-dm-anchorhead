@@ -24,6 +24,7 @@ public class IFAction {
 	public static final String BUY = "buy";
 	public static final String GIVE = "give";
         
+        
 	String m_actor;
 	String m_type;
 	
